@@ -1,0 +1,48 @@
+import type { Metadata } from "next"
+import { Toaster } from "sonner"
+import "../css/globals.css"
+import { ReduxProvider } from "@/providers/redux-provider"
+import { ThemeProvider } from "@/providers/theme-provider"
+import { Sidebar } from "@/components/layout/sidebar"
+import { MobileNav } from "@/components/layout/mobile-nav"
+import { HtmlLangSync } from "@/components/layout/html-lang-sync"
+
+export const metadata: Metadata = {
+  title: "Master Drive — Aprenda a conduzir jogando",
+  description:
+    "Estude para o exame de condução com um sistema de Active Recall gamificado: XP, níveis, conquistas e revisão inteligente.",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="pt" suppressHydrationWarning>
+      <body className="bg-asphalt min-h-screen">
+        <ThemeProvider>
+          <ReduxProvider>
+            <HtmlLangSync />
+            <div className="flex min-h-screen">
+              <Sidebar />
+              <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+            </div>
+            <MobileNav />
+            <Toaster
+              theme="dark"
+              position="top-right"
+              toastOptions={{
+                style: {
+                  background: "rgba(23,27,36,0.9)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#edeff3",
+                },
+              }}
+            />
+          </ReduxProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}

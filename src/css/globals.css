@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MASTER DRIVE — Design tokens ("Night Drive" / "Day Drive")
+   Tema claro por defeito; tema escuro ativado pela classe .dark
+   (controlada pelo next-themes, com deteção da preferência do SO).
+   ============================================================ */
+@theme {
+  --font-display: "Geist", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", monospace;
+
+  /* Base surfaces — tema claro ("Day Drive") */
+  --color-base: #fdf8f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #fbfbfd;
+  --color-elevated: #ffffff;
+  --color-hairline: rgba(10, 12, 16, 0.08);
+  --color-hairline-strong: rgba(10, 12, 16, 0.14);
+  --color-overlay: rgba(10, 12, 16, 0.045);
+  --color-overlay-strong: rgba(10, 12, 16, 0.07);
+
+  /* Texto */
+  --color-text: #281e12;
+  --color-text-muted: #565f6d;
+  --color-text-faint: #8a92a0;
+
+  /* Acentos — farol (gold) + mostrador (teal) */
+  --color-gold: #c8890f;
+  --color-gold-soft: #e0a72e;
+  --color-teal: #0f9d8f;
+  --color-teal-soft: #17b3a3;
+
+  /* Semânticos */
+  --color-success: #1a9b6c;
+  --color-success-soft: rgba(26, 155, 108, 0.12);
+  --color-danger: #d43f47;
+  --color-danger-soft: rgba(212, 63, 71, 0.12);
+  --color-warning: #c8890f;
+
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+/* Tema escuro ("Night Drive") — aplicado quando <html> tem a classe .dark */
+.dark {
+  --color-base: #000000;
+  --color-surface: #12151c;
+  --color-surface-2: #171b24;
+  --color-elevated: #1b1f29;
+  --color-gray-muted: 0, 0%, 4%, 1;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-hairline-strong: rgba(255, 255, 255, 0.14);
+  --color-overlay: rgba(255, 255, 255, 0.05);
+  --color-overlay-strong: rgba(255, 255, 255, 0.07);
+
+  --color-text: #edeff3;
+  --color-text-muted: #8b93a1;
+  --color-text-faint: #5c6472;
+
+  --color-gold: #f5b942;
+  --color-gold-soft: #f7c96a;
+  --color-teal: #34d1bf;
+  --color-teal-soft: #5be0d2;
+
+  --color-success: #34d399;
+  --color-success-soft: rgba(52, 211, 153, 0.14);
+  --color-danger: #f2545b;
+  --color-danger-soft: rgba(242, 84, 91, 0.14);
+  --color-warning: #f5b942;
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Vidro (glassmorphism leve) */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--color-hairline);
+  transition: all 0.15s ease-in;
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--color-hairline-strong);
+}
+
+.dark .glass {
+  background: #0b0b0b;
+}
+
+.dark .glass-hover:hover {
+  background: #111111cc;
+  border-color: rgb(246 246 246 / 30%);
+}
+
+.dark .glass-strong {
+  background: rgba(27, 31, 41, 0.72);
+}
+
+/* Linha de estrada tracejada — motivo assinatura, usado como divisor */
+.lane-divider {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-gold) 0px,
+    var(--color-gold) 14px,
+    transparent 14px,
+    transparent 28px
+  );
+  opacity: 0.55;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(
+    120deg,
+    var(--color-gold-soft),
+    var(--color-gold) 60%,
+    var(--color-teal-soft)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #14161c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline-strong);
+  border-radius: 999px;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
