@@ -4,7 +4,7 @@ Premium, gamified web application for studying for the driving test using **Acti
 
 ## Stack
 
-Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Redux Toolkit + Redux Persist · Framer Motion · Recharts · Sonner · React Confetti · React CountUp
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Redux Toolkit + Redux Persist · Shadcn/ui · Framer Motion · Recharts · Sonner · React Confetti · React CountUp
 
 ## How to run the project
 
