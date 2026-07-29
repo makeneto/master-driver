@@ -23,7 +23,7 @@ const pt = {
     examModeMobile: "Exame",
     achievements: "Conquistas",
     profile: "Perfil",
-    settings: "Configurações",
+    settings: "Ajustes",
   },
   greeting:{
     morning: "Bom dia",
@@ -90,7 +90,7 @@ const pt = {
     unlockedOn: "Desbloqueada em {date}",
   },
   settings: {
-    title: "Configurações",
+    title: "Ajustes",
     theme: "Tema",
     themeDesc:
       "Escolhe entre o tema claro e o tema escuro, ou segue a preferência do dispositivo.",
