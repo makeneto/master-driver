@@ -72,7 +72,7 @@ export default function SettingsPage() {
     reader.onload = () => {
       try {
         const text = reader.result as string
-        JSON.parse(text) // valida que é JSON
+        JSON.parse(text)
         localStorage.setItem(STORAGE_KEY, text)
         toast.success(t("settings.toastImported"))
         setTimeout(() => window.location.reload(), 800)
