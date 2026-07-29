@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation"
 import {
   Home,
   BookOpenCheck,
-  Trophy,
   UserCircle2,
   Settings,
+  GraduationCap,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "@/hooks/use-translation"
@@ -19,7 +19,7 @@ export function MobileNav() {
   const ITEMS = [
     { href: "/", label: t("nav.home"), icon: Home },
     { href: "/quiz", label: t("nav.quiz"), icon: BookOpenCheck },
-    { href: "/achievements", label: t("nav.achievements"), icon: Trophy },
+    { href: "/exam", label: t("nav.examMode"), icon: GraduationCap },
     { href: "/profile", label: t("nav.profile"), icon: UserCircle2 },
     { href: "/settings", label: t("nav.settings"), icon: Settings },
   ]
