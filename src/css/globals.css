@@ -130,6 +130,12 @@ body {
   transition: all 0.15s ease-in;
 }
 
+.activeLink {
+  background: #ffe1bc;
+  color: #241903;
+  border: 1px solid #e7e7e7;
+}
+
 .glass-hover:hover {
   border-color: rgb(225, 205, 182);
 }
@@ -143,6 +149,12 @@ body {
 
 .dark .glass {
   background: #0b0b0b;
+}
+
+.dark .activeLink {
+  background: #ffffff;
+  color: #241903;
+  border: 1px solid #cbcbcb;
 }
 
 .dark .glass-hover:hover {
