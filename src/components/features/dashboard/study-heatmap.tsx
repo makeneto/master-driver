@@ -22,7 +22,7 @@ function buildLastDays(count: number): string[] {
 
 export function StudyHeatmap({ studyDates }: { studyDates: string[] }) {
   const { t } = useTranslation()
-  const days = buildLastDays(365)
+  const days = buildLastDays(60)
   const studiedSet = new Set(studyDates)
 
   const weeks: string[][] = []
@@ -36,26 +36,32 @@ export function StudyHeatmap({ studyDates }: { studyDates: string[] }) {
         <CardTitle>{t("dashboard.heatmapTitle")}</CardTitle>
         <CardDescription>{t("dashboard.heatmapDesc")}</CardDescription>
       </CardHeader>
-      <div className="flex gap-1 overflow-x-auto pb-2">
-        {weeks.map((week, wi) => (
-          <div key={wi} className="flex flex-col gap-1">
-            {week.map((day) => {
-              const studied = studiedSet.has(day)
-              return (
-                <div
-                  key={day}
-                  title={formatDate(day)}
-                  className={cn(
-                    "h-3.5 w-3.5 rounded-[4px] transition-colors",
-                    studied
-                      ? "bg-[var(--color-gold)]"
-                      : "bg-[var(--color-overlay)]",
-                  )}
-                />
-              )
-            })}
-          </div>
-        ))}
+
+      <div
+        className="grid h-70 w-full gap-1 pt-2 pb-2"
+        style={{
+          gridTemplateRows: "repeat(7, minmax(0, 1fr))",
+          gridAutoFlow: "column",
+          gridAutoColumns: "minmax(0, 1fr)",
+        }}
+      >
+        {weeks.map((week, wi) =>
+          week.map((day) => {
+            const studied = studiedSet.has(day)
+            return (
+              <div
+                key={day}
+                title={formatDate(day)}
+                className={cn(
+                  "h-full w-full rounded-[4px] transition-colors",
+                  studied
+                    ? "bg-[var(--color-gold)]"
+                    : "bg-[var(--color-overlay)]",
+                )}
+              />
+            )
+          }),
+        )}
       </div>
     </Card>
   )

@@ -44,7 +44,7 @@ export function ExamQuestionCard({
           {t("exam.revealAtEnd")}
         </p>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex gap-3">
           <Button onClick={() => onEvaluate(true)} variant="success" size="lg" className="flex-1">
             <Check className="h-4 w-4" /> {t("exam.knowIt")}
           </Button>

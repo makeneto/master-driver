@@ -32,15 +32,10 @@ import {
 import { Switch } from "@/components/ui/misc"
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "@/hooks/use-translation"
-import {
-  LANGUAGE_LABELS,
-  LANGUAGE_FLAGS,
-  type Language,
-} from "@/i18n/translations"
 import { cn } from "@/lib/utils"
+import { LanguageSelect } from "@/components/ui/language-select"
 
 const STORAGE_KEY = "persist:master-drive"
-const LANGUAGES: Language[] = ["pt", "en", "fr"]
 
 export default function SettingsPage() {
   const dispatch = useAppDispatch()
@@ -103,7 +98,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-[70%] py-10">
+    <div className="mx-auto max-w-[70%] py-10 lg:py-16">
       <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">
         {t("settings.title")}
       </h1>
@@ -138,17 +133,7 @@ export default function SettingsPage() {
           title={t("settings.language")}
           description={t("settings.languageDesc")}
         >
-          <select
-            value={settings.language}
-            onChange={(e) => dispatch(setLanguage(e.target.value as Language))}
-            className="cursor-pointer rounded-full border border-[var(--color-hairline-strong)] bg-[var(--color-overlay)] px-3 py-1.5 text-sm outline-none [&>option]:bg-[var(--color-surface)]"
-          >
-            {LANGUAGES.map((lang) => (
-              <option key={lang} value={lang}>
-                {LANGUAGE_FLAGS[lang]} {LANGUAGE_LABELS[lang]}
-              </option>
-            ))}
-          </select>
+          <LanguageSelect />
         </SettingRow>
 
         <SettingRow
@@ -178,7 +163,8 @@ export default function SettingsPage() {
             <CardTitle>{t("settings.dataTitle")}</CardTitle>
             <CardDescription>{t("settings.dataDesc")}</CardDescription>
           </CardHeader>
-          <div className="flex flex-wrap gap-3">
+
+          <div className="mt-4 flex flex-wrap gap-3">
             <Button variant="secondary" onClick={handleExport}>
               <Download className="h-4 w-4" /> {t("settings.exportProgress")}
             </Button>

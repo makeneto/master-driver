@@ -39,7 +39,9 @@ export function TopicCard({
       <Link href={`/quiz?topic=${topic.id}`}>
         <Card className="group glass-hover relative overflow-hidden p-5 transition-color">
           {isMastered && (
-            <Medal className="absolute right-4 top-4 h-5 w-5 text-[var(--color-gold)]" />
+            <div className="bg-[var(--color-medal)] w-6 h-6 flex items-center justify-center rounded-full absolute right-5 top-4 z-50">
+              <Medal className="w-4 h-4 text-amber-900" />
+            </div>
           )}
 
           <div className="flex items-start justify-between">

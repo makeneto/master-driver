@@ -82,7 +82,7 @@ export function ExamContent() {
           <h1 className="font-[var(--font-display)] text-2xl font-semibold">
             {t("exam.title")}
           </h1>
-          <p className="text-sm text-[var(--color-text-muted)]">
+          <p className="text-sm text-[var(--color-text-muted)] mb-4">
             {t("exam.intro", { count: EXAM_SIZE })}
           </p>
           <Button size="lg" onClick={startExam}>
@@ -110,7 +110,7 @@ export function ExamContent() {
   }
 
   return (
-    <div className="mx-auto max-w-[70%] py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
       <AnimatePresence mode="wait">
         {currentQuestion && (
           <ExamQuestionCard

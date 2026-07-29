@@ -12,7 +12,7 @@ import {
 import { useAppSelector } from "@/store/hooks"
 import { TOPICS } from "@/constants/topics"
 import { getQuestionsByTopic } from "@/data/questions"
-import { formatMinutes } from "@/lib/utils"
+import { formatDate, formatMinutes } from "@/lib/utils"
 import { useTranslation } from "@/hooks/use-translation"
 import { StatCard } from "@/components/features/dashboard/stat-card"
 import { AccuracyBarChart } from "@/components/features/dashboard/accuracy-bar-chart"
@@ -55,7 +55,7 @@ export default function DashboardPage() {
           </h1>
           <p className="mt-1 text-sm text-[var(--color-text-muted)]">
             {lastSession
-              ? t("dashboard.lastSession", { date: lastSession })
+              ? t("dashboard.lastSession", { date: formatDate(lastSession) })
               : t("dashboard.neverStudied")}
           </p>
         </div>
@@ -108,16 +108,15 @@ export default function DashboardPage() {
         />
       </div>
 
-      <div className="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="mb-6 grid lg:grid-cols-[35%_auto] gap-4">
+        <StudyHeatmap studyDates={profile.studyDates} />
         <AccuracyBarChart topics={topics} />
+      </div>
+
+      <div className="mb-6 grid lg:grid-cols-[35%_auto] gap-4">
+        <TopicRankings topics={topics} />
         <PerformanceRadarChart topics={topics} />
       </div>
-
-      <div className="mb-6">
-        <StudyHeatmap studyDates={profile.studyDates} />
-      </div>
-
-      <TopicRankings topics={topics} />
 
       <p className="mt-6 text-center text-xs text-[var(--color-text-faint)]">
         {t("dashboard.totalStudyTime", {

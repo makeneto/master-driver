@@ -1,38 +1,80 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { Languages } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setLanguage } from "@/store/slices/settingsSlice";
-import { LANGUAGE_LABELS, LANGUAGE_FLAGS, type Language } from "@/i18n/translations";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import Image from "next/image"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
+import { setLanguage } from "@/store/slices/settingsSlice"
+import { LANGUAGE_LABELS, type Language } from "@/i18n/translations"
+import { cn } from "@/lib/utils"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-const LANGUAGES: Language[] = ["pt", "en", "fr"];
+const LANGUAGES: Language[] = ["pt", "en", "fr"]
+
+const LANGUAGE_FLAG_IMAGES: Record<Language, string> = {
+  pt: "/flags/angola-flag.png",
+  en: "/flags/usa-flag.png",
+  fr: "/flags/france-flag.png",
+}
 
 export function LanguageSelect({ className }: { className?: string }) {
-  const dispatch = useAppDispatch();
-  const language = useAppSelector((s) => s.settings.language);
+  const dispatch = useAppDispatch()
+  const language = useAppSelector((s) => s.settings.language)
 
   return (
-    <div
-      className={cn(
-        "flex items-center gap-2 rounded-full border border-[var(--color-hairline-strong)] bg-[var(--color-overlay)] px-3 py-1.5",
-        className
-      )}
+    <Select
+      value={language}
+      onValueChange={(value) => dispatch(setLanguage(value as Language))}
     >
-      <Languages className="h-4 w-4 text-[var(--color-text-muted)]" />
-      <select
-        value={language}
-        onChange={(e) => dispatch(setLanguage(e.target.value as Language))}
+      <SelectTrigger
         aria-label="Idioma / Language / Langue"
-        className="cursor-pointer bg-transparent text-sm text-[var(--color-text)] outline-none [&>option]:bg-[var(--color-surface)] [&>option]:text-[var(--color-text)]"
+        className={cn(
+          "flex items-center gap-2 rounded-full border border-[var(--color-hairline-strong)] px-3 py-1.5 h-auto text-sm text-[var(--color-text)]",
+          className,
+        )}
+      >
+        <SelectValue>
+          <div className="flex items-center gap-2">
+            <Image
+              src={LANGUAGE_FLAG_IMAGES[language]}
+              alt={LANGUAGE_LABELS[language]}
+              width={18}
+              height={18}
+              className="rounded-sm object-cover"
+            />
+            <span>{LANGUAGE_LABELS[language]}</span>
+          </div>
+        </SelectValue>
+      </SelectTrigger>
+
+      <SelectContent
+        align="end"
+        className="min-w-[140px] rounded-lg border border-[var(--color-hairline-strong)] bg-[var(--color-surface)]"
       >
         {LANGUAGES.map((lang) => (
-          <option key={lang} value={lang}>
-            {LANGUAGE_FLAGS[lang]} {LANGUAGE_LABELS[lang]}
-          </option>
+          <SelectItem
+            key={lang}
+            value={lang}
+            className="cursor-pointer text-sm text-[var(--color-text)] focus:bg-[var(--color-overlay)]"
+          >
+            <div className="flex items-center gap-2">
+              <Image
+                src={LANGUAGE_FLAG_IMAGES[lang]}
+                alt={LANGUAGE_LABELS[lang]}
+                width={18}
+                height={18}
+                className="rounded-sm object-cover"
+              />
+              <span>{LANGUAGE_LABELS[lang]}</span>
+            </div>
+          </SelectItem>
         ))}
-      </select>
-    </div>
-  );
+      </SelectContent>
+    </Select>
+  )
 }

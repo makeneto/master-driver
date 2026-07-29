@@ -40,9 +40,9 @@ export function ExamResults({
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mx-auto max-w-[70%] py-16"
+      className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16"
     >
-      <Card className="flex flex-col items-center gap-6 p-10 text-center">
+      <Card className="flex flex-col items-center gap-8 p-10 text-center">
         <GraduationCap
           className={
             passed
@@ -70,7 +70,7 @@ export function ExamResults({
           </span>
         </Gauge>
 
-        <div className="grid w-full grid-cols-3 gap-3 text-sm">
+        <div className="w-full flex justify-center gap-10 lg:gap-10 text-sm">
           <div>
             <p className="font-[var(--font-mono)] text-lg font-semibold text-[var(--color-success)]">
               {correct}
@@ -110,7 +110,7 @@ export function ExamResults({
           </div>
         )}
 
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex gap-3">
           <Button onClick={onRestart} variant="secondary" size="lg">
             <RotateCcw className="h-4 w-4" /> {t("exam.restart")}
           </Button>

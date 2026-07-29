@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Eye, Check, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { useTranslation } from "@/hooks/use-translation";
-import type { Question } from "@/types";
+import { AnimatePresence, motion } from "framer-motion"
+import { Eye, Check, X } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { useTranslation } from "@/hooks/use-translation"
+import type { Question } from "@/types"
 
 export function QuestionCard({
   question,
@@ -17,15 +17,15 @@ export function QuestionCard({
   onReveal,
   onEvaluate,
 }: {
-  question: Question;
-  index: number;
-  total: number;
-  showAnswer: boolean;
-  feedback: "correct" | "wrong" | null;
-  onReveal: () => void;
-  onEvaluate: (correct: boolean) => void;
+  question: Question
+  index: number
+  total: number
+  showAnswer: boolean
+  feedback: "correct" | "wrong" | null
+  onReveal: () => void
+  onEvaluate: (correct: boolean) => void
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <motion.div
       key={question.id}
@@ -42,7 +42,7 @@ export function QuestionCard({
         className={cn(
           "relative overflow-hidden p-8 transition-colors sm:p-10",
           feedback === "correct" && "border-[var(--color-success)]/40",
-          feedback === "wrong" && "border-[var(--color-danger)]/40"
+          feedback === "wrong" && "border-[var(--color-danger)]/40",
         )}
       >
         <div className="mb-6 flex items-center gap-3">
@@ -66,8 +66,12 @@ export function QuestionCard({
               className="mt-6 overflow-hidden"
             >
               <div className="rounded-2xl border border-[var(--color-hairline-strong)] bg-[var(--color-overlay)] p-5">
-                <p className="text-sm uppercase tracking-wide text-[var(--color-teal-soft)]">{t("quiz.answerLabel")}</p>
-                <p className="mt-2 text-lg text-[var(--color-text)]">{question.answer}</p>
+                <p className="text-sm uppercase tracking-wide text-[var(--color-teal-soft)]">
+                  {t("quiz.answerLabel")}
+                </p>
+                <p className="mt-2 text-lg text-[var(--color-text)]">
+                  {question.answer}
+                </p>
               </div>
             </motion.div>
           )}
@@ -81,11 +85,21 @@ export function QuestionCard({
             </Button>
           ) : (
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button onClick={() => onEvaluate(true)} variant="success" size="lg" className="flex-1">
+              <Button
+                onClick={() => onEvaluate(true)}
+                variant="success"
+                size="lg"
+                className="flex-1"
+              >
                 <Check className="h-4 w-4" />
                 {t("quiz.gotItRight")}
               </Button>
-              <Button onClick={() => onEvaluate(false)} variant="danger" size="lg" className="flex-1">
+              <Button
+                onClick={() => onEvaluate(false)}
+                variant="danger"
+                size="lg"
+                className="flex-1"
+              >
                 <X className="h-4 w-4" />
                 {t("quiz.gotItWrong")}
               </Button>
@@ -94,5 +108,5 @@ export function QuestionCard({
         </div>
       </Card>
     </motion.div>
-  );
+  )
 }

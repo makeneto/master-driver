@@ -18,10 +18,11 @@ export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
 
   return (
     <Card className="p-6">
-      <CardHeader className="p-0 pb-4">
+      <CardHeader className="p-0 mb-7">
         <CardTitle>{t("dashboard.barChartTitle")}</CardTitle>
         <CardDescription>{t("dashboard.barChartDesc")}</CardDescription>
       </CardHeader>
+
       <div className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 8 }}>

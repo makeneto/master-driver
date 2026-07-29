@@ -1,13 +1,19 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
-import "../css/globals.css"
+
 import { ReduxProvider } from "@/providers/redux-provider"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { Sidebar } from "@/components/layout/sidebar"
 import { MobileNav } from "@/components/layout/mobile-nav"
 import { HtmlLangSync } from "@/components/layout/html-lang-sync"
+import { cn } from "@/lib/utils"
+import "../css/globals.css"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
+  icons: "/favicon.ico",
   title: "Master Drive — Aprenda a conduzir jogando",
   description:
     "Estude para o exame de condução com um sistema de Active Recall gamificado: XP, níveis, conquistas e revisão inteligente.",
@@ -19,7 +25,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html
+      lang="pt"
+      suppressHydrationWarning
+      className={cn("font-sans", inter.variable)}
+    >
       <body className="bg-asphalt min-h-screen">
         <ThemeProvider>
           <ReduxProvider>
@@ -28,7 +38,9 @@ export default function RootLayout({
               <Sidebar />
               <main className="flex-1 pb-24 lg:pb-0">{children}</main>
             </div>
+            
             <MobileNav />
+
             <Toaster
               theme="dark"
               position="top-right"

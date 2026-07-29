@@ -11,11 +11,13 @@ import {
   Trophy,
   UserCircle2,
   Settings,
+  IdCard,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "@/hooks/use-translation"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { LanguageSelect } from "@/components/ui/language-select"
+import Logo from "../ui/logo"
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -26,21 +28,16 @@ export function Sidebar() {
     { href: "/", label: t("nav.home"), icon: Home },
     { href: "/dashboard", label: t("nav.dashboard"), icon: LayoutDashboard },
     { href: "/quiz", label: t("nav.quiz"), icon: BookOpenCheck },
-    { href: "/exame", label: t("nav.examMode"), icon: GraduationCap },
-    { href: "/conquistas", label: t("nav.achievements"), icon: Trophy },
-    { href: "/perfil", label: t("nav.profile"), icon: UserCircle2 },
-    { href: "/configuracoes", label: t("nav.settings"), icon: Settings },
+    { href: "/exam", label: t("nav.examMode"), icon: GraduationCap },
+    { href: "/achievements", label: t("nav.achievements"), icon: Trophy },
+    { href: "/profile", label: t("nav.profile"), icon: UserCircle2 },
+    { href: "/settings", label: t("nav.settings"), icon: Settings },
   ]
 
   return (
     <aside className="sticky top-0 hidden h-screen w-[240px] flex-col gap-1 border-r border-[var(--color-hairline)] p-4 lg:flex">
       <div className="mb-6 flex items-center justify-between gap-2 px-2 pt-2">
-        <div className="flex items-center gap-2">
-          <div className="lane-divider w-6" />
-          <span className="font-[var(--font-display)] text-sm font-semibold uppercase tracking-wide text-[var(--color-text)]">
-            Master <span className="text-gradient-gold">Drive</span>
-          </span>
-        </div>
+        <Logo />
         <ThemeToggle />
       </div>
 
@@ -77,8 +74,8 @@ export function Sidebar() {
 
       <div className="mb-4" />
       <LanguageSelect className="mb-3 w-full" />
-      <p className="px-2 text-[10px] text-center tracking-widest text-[var(--color-text-faint)]">
-        © Makene Neto | {currentYear}
+      <p className="px-2 text-[11px] tracking-widest text-[var(--color-text-faint)] font-medium flex items-center justify-center gap-1.5">
+        © Makene Neto <IdCard size={12} /> {currentYear}
       </p>
     </aside>
   )
