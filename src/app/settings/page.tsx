@@ -98,7 +98,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-[70%] py-10 lg:py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
       <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">
         {t("settings.title")}
       </h1>
