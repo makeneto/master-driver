@@ -31,13 +31,13 @@ export function MobileNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-1 rounded-xl py-1.5 px-4 text-xs transition-colors",
+              "flex items-center gap-1 rounded-xl py-1.5 px-4 text-xs transition-colors border-none",
               active
-                ? "glass text-[var(--color-gold)]"
+                ? "activeLink dark:text-black text-[var(--color-gold)]"
                 : "text-[var(--color-text-muted)]",
             )}
           >
-            <item.icon className="h-5 w-5" />
+            <item.icon className="h-4.5 w-4.5" />
             {item.label}
           </Link>
         )
