@@ -20,9 +20,15 @@ const pt = {
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Modo Exame",
+    examModeMobile: "Exame",
     achievements: "Conquistas",
     profile: "Perfil",
     settings: "Configurações",
+  },
+  greeting:{
+    morning: "Bom dia",
+    afternoon: "Boa tarde",
+    evening: "Boa noite",
   },
   home: {
     categories: "Categorias",
@@ -224,9 +230,15 @@ const en: Dict = {
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Exam Mode",
+    examModeMobile: "Exam",
     achievements: "Achievements",
     profile: "Profile",
     settings: "Settings",
+  },
+  greeting:{
+    morning: "Good morning",
+    afternoon: "Good Afternoon",
+    evening: "Good evening",
   },
   home: {
     categories: "Categories",
@@ -425,9 +437,15 @@ const fr: Dict = {
     dashboard: "Tableau de bord",
     quiz: "Quiz",
     examMode: "Mode Examen",
+    examModeMobile: "Examen",
     achievements: "Succès",
     profile: "Profil",
     settings: "Paramètres",
+  },
+  greeting:{
+    morning: "Bonjour",
+    afternoon: "Bon après-midi",
+    evening: "Bonsoir",
   },
   home: {
     categories: "Catégories",
