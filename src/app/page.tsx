@@ -39,7 +39,7 @@ export default function HomePage() {
               <h1 className="font-[var(--font-display)] text-2xl font-semibold tracking-tight">{firstName}</h1>
             </div>
 
-            <Link href="/profile" className="lg:hidden w-9.5 h-9.5 rounded-full mb-2 dark:bg-zinc-800 bg-amber-400">
+            <Link href="/profile" className="lg:hidden w-9.5 h-9.5 rounded-full mb-2 dark:bg-white bg-amber-400">
                 <Image src='/avatar.svg' alt={`${firstName}'s Profile`} width={1900} height={900}/>
             </Link>
           </div>
