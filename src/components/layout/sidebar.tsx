@@ -12,6 +12,7 @@ import {
   UserCircle2,
   Settings,
   IdCard,
+  Notebook,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "@/hooks/use-translation"
@@ -27,6 +28,7 @@ export function Sidebar() {
   const NAV_ITEMS = [
     { href: "/", label: t("nav.home"), icon: Home },
     { href: "/dashboard", label: t("nav.dashboard"), icon: LayoutDashboard },
+    { href: "/notebook", label: t("nav.notebook"), icon: Notebook },
     { href: "/quiz", label: t("nav.quiz"), icon: BookOpenCheck },
     { href: "/exam", label: t("nav.examMode"), icon: GraduationCap },
     { href: "/achievements", label: t("nav.achievements"), icon: Trophy },
