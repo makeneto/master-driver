@@ -52,7 +52,7 @@ export function QuestionCard({
           <div className="lane-divider flex-1" />
         </div>
 
-        <h2 className="font-[var(--font-display)] text-2xl font-semibold text-center leading-snug tracking-tight sm:text-3xl my-15">
+        <h2 className="font-[var(--font-display)] text-2xl font-semibold text-center leading-snug tracking-tight sm:text-3xl my-10">
           {question.question}
         </h2>
 
@@ -79,10 +79,12 @@ export function QuestionCard({
 
         <div className="mt-8">
           {!showAnswer ? (
-            <Button onClick={onReveal} size="lg" className="w-full sm:w-auto">
-              <Eye className="h-4 w-4" />
-              {t("quiz.showAnswer")}
-            </Button>
+            <div className="flex justify-center">
+              <Button onClick={onReveal} size="lg" className="w-full sm:w-auto">
+                <Eye className="h-4 w-4" />
+                {t("quiz.showAnswer")}
+              </Button>
+            </div>
           ) : (
             <div className="flex gap-3">
               <Button
