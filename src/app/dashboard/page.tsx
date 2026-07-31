@@ -60,7 +60,7 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Button asChild variant="secondary">
+          <Button asChild variant="default">
             <Link
               href="/quiz?mode=review-wrong"
               className="flex items-center gap-2"
@@ -68,7 +68,7 @@ export default function DashboardPage() {
               <AlertTriangle className="h-4 w-4" /> {t("dashboard.reviewWrong")}
             </Link>
           </Button>
-          <Button asChild variant="secondary">
+          <Button asChild variant="default">
             <Link
               href="/quiz?mode=review-weak"
               className="flex items-center gap-2"
