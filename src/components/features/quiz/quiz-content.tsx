@@ -157,7 +157,7 @@ export function QuizContent() {
     quiz.currentIndex >= quiz.questionIds.length && quiz.questionIds.length > 0
 
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] px-6 pt-7 pb-10">
       {showConfetti && (
         <ReactConfetti
           numberOfPieces={140}
@@ -222,7 +222,7 @@ export function QuizContent() {
 function TopicPicker() {
   const { t, topicText } = useTranslation()
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] pt-7 pb-10">
       <h1 className="mb-2 font-[var(--font-display)] text-2xl font-semibold tracking-tight">
         {t("quiz.chooseTopic")}
       </h1>
