@@ -76,7 +76,7 @@ export function ExamContent() {
 
   if (!started) {
     return (
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="mx-auto max-w-3xl px-6 pt-7 pb-10">
         <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">{t("nav.examModeMobile")}</h1>
 
         <Card className="flex flex-col items-center gap-4 p-10 text-center">
@@ -112,7 +112,7 @@ export function ExamContent() {
   }
 
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] pt-7 pb-10">
       <AnimatePresence mode="wait">
         {currentQuestion && (
           <ExamQuestionCard
