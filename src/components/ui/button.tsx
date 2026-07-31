@@ -22,8 +22,8 @@ const buttonVariants = cva(
         gold: "text-[var(--color-gold-soft)] hover:bg-[var(--color-gold-soft)]/10",
         teal: "text-[var(--color-teal-soft)] hover:bg-[var(--color-teal-soft)]/10",
         success:
-          "text-[var(--color-success)] hover:bg-[var(--color-success)]/10",
-        danger: "text-[var(--color-danger)] hover:bg-[var(--color-danger)]/10",
+          "text-[var(--color-success)] bg-[var(--color-success)]/9 hover:bg-[var(--color-success)]/18",
+        danger: "text-[var(--color-danger)] bg-[var(--color-danger)]/9 hover:bg-[var(--color-danger)]/18",
       },
       size: {
         default:
