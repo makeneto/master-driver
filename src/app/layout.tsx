@@ -9,6 +9,7 @@ import { MobileNav } from "@/components/layout/mobile-nav"
 import { HtmlLangSync } from "@/components/layout/html-lang-sync"
 import { cn } from "@/lib/utils"
 import "../css/globals.css"
+import Topbar from "@/components/layout/topbar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -36,9 +37,13 @@ export default function RootLayout({
             <HtmlLangSync />
             <div className="flex min-h-screen">
               <Sidebar />
-              <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+
+              <div className="w-full">
+                <Topbar />
+                <main className="flex-1 pb-24 lg:pb-0">{children}</main>
+              </div>
             </div>
-            
+
             <MobileNav />
 
             <Toaster
