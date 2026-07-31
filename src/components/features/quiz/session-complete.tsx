@@ -40,7 +40,7 @@ export function SessionComplete({
           <span className="font-[var(--font-mono)] text-2xl font-semibold">{pct}%</span>
         </Gauge>
 
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row mt-8">
           <Button onClick={onRestart} variant="secondary" size="lg">
             <RotateCcw className="h-4 w-4" />
             {t("quiz.restart")}
