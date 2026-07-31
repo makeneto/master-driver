@@ -1,7 +1,6 @@
 import type { Question } from "@/types"
 
 export const questions: Question[] = [
-  // ── Regras de Prioridade ──────────────────────────────────
   {
     id: 1,
     topic: "prioridade",

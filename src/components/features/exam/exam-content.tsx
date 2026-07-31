@@ -76,8 +76,10 @@ export function ExamContent() {
 
   if (!started) {
     return (
-      <div className="mx-auto max-w-xl px-6 py-20 text-center">
-        <Card className="flex flex-col items-center gap-4 p-10">
+      <div className="mx-auto max-w-3xl px-6 py-10">
+        <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">{t("nav.examModeMobile")}</h1>
+
+        <Card className="flex flex-col items-center gap-4 p-10 text-center">
           <GraduationCap className="h-8 w-8 text-[var(--color-gold-soft)]" />
           <h1 className="font-[var(--font-display)] text-2xl font-semibold">
             {t("exam.title")}

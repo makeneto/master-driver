@@ -72,7 +72,7 @@ export default function SettingsPage() {
     reader.onload = () => {
       try {
         const text = reader.result as string
-        JSON.parse(text) // valida que é JSON
+        JSON.parse(text)
         localStorage.setItem(STORAGE_KEY, text)
         toast.success(t("settings.toastImported"))
         setTimeout(() => window.location.reload(), 800)
@@ -98,7 +98,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-[70%] py-10 lg:py-16">
+    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16">
       <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">
         {t("settings.title")}
       </h1>

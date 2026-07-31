@@ -84,7 +84,7 @@ export function QuestionCard({
               {t("quiz.showAnswer")}
             </Button>
           ) : (
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex gap-3">
               <Button
                 onClick={() => onEvaluate(true)}
                 variant="success"

@@ -21,9 +21,15 @@ const pt = {
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Modo Exame",
+    examModeMobile: "Exame",
     achievements: "Conquistas",
     profile: "Perfil",
-    settings: "Configurações",
+    settings: "Ajustes",
+  },
+  greeting:{
+    morning: "Bom dia",
+    afternoon: "Boa tarde",
+    evening: "Boa noite",
   },
   home: {
     categories: "Categorias",
@@ -85,7 +91,7 @@ const pt = {
     unlockedOn: "Desbloqueada em {date}",
   },
   settings: {
-    title: "Configurações",
+    title: "Ajustes",
     theme: "Tema",
     themeDesc:
       "Escolhe entre o tema claro e o tema escuro, ou segue a preferência do dispositivo.",
@@ -226,9 +232,15 @@ const en: Dict = {
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Exam Mode",
+    examModeMobile: "Exam",
     achievements: "Achievements",
     profile: "Profile",
     settings: "Settings",
+  },
+  greeting:{
+    morning: "Good morning",
+    afternoon: "Good Afternoon",
+    evening: "Good evening",
   },
   home: {
     categories: "Categories",
@@ -428,9 +440,15 @@ const fr: Dict = {
     dashboard: "Tableau de bord",
     quiz: "Quiz",
     examMode: "Mode Examen",
+    examModeMobile: "Examen",
     achievements: "Succès",
     profile: "Profil",
     settings: "Paramètres",
+  },
+  greeting:{
+    morning: "Bonjour",
+    afternoon: "Bon après-midi",
+    evening: "Bonsoir",
   },
   home: {
     categories: "Catégories",
