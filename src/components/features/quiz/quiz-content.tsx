@@ -229,12 +229,12 @@ function TopicPicker() {
       <p className="mb-8 text-sm text-[var(--color-text-muted)]">
         {t("quiz.chooseTopicDesc")}
       </p>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 items-stretch sm:grid-cols-2">
         {TOPICS.map((topic) => {
           const { name, description } = topicText(topic.id)
           return (
             <Link key={topic.id} href={`/quiz?topic=${topic.id}`}>
-              <Card className="glass-hover flex items-center gap-4 p-4 transition-colors hover:border-[var(--color-hairline-strong)]">
+              <Card className="glass-hover flex items-center gap-4 p-4 h-full transition-colors hover:border-[var(--color-hairline-strong)]">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-overlay)]">
                   <DynamicIcon
                     name={topic.icon}
@@ -243,7 +243,7 @@ function TopicPicker() {
                 </div>
                 <CardHeader className="p-0">
                   <CardTitle className="text-sm">{name}</CardTitle>
-                  <CardDescription>{description}</CardDescription>
+                  <CardDescription className="line-clamp">{description}</CardDescription>
                 </CardHeader>
               </Card>
             </Link>
