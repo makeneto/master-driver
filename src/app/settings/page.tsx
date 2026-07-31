@@ -165,10 +165,10 @@ export default function SettingsPage() {
           </CardHeader>
 
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button variant="secondary" onClick={handleExport}>
+            <Button variant="default" onClick={handleExport}>
               <Download className="h-4 w-4" /> {t("settings.exportProgress")}
             </Button>
-            <Button variant="secondary" onClick={handleImportClick}>
+            <Button variant="default" onClick={handleImportClick}>
               <Upload className="h-4 w-4" /> {t("settings.importProgress")}
             </Button>
             <input
