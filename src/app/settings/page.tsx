@@ -55,7 +55,7 @@ export default function SettingsPage() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = "master-drive-progresso.json"
+    a.download = "master-driver-progress.json"
     a.click()
     URL.revokeObjectURL(url)
     toast.success(t("settings.toastExported"))
@@ -165,10 +165,10 @@ export default function SettingsPage() {
           </CardHeader>
 
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button variant="default" onClick={handleExport}>
+            <Button className="text-[0.8rem]" onClick={handleExport}>
               <Download className="h-4 w-4" /> {t("settings.exportProgress")}
             </Button>
-            <Button variant="default" onClick={handleImportClick}>
+            <Button className="text-[0.8rem]" onClick={handleImportClick}>
               <Upload className="h-4 w-4" /> {t("settings.importProgress")}
             </Button>
             <input
@@ -178,7 +178,7 @@ export default function SettingsPage() {
               hidden
               onChange={handleImportFile}
             />
-            <Button variant="danger" onClick={handleReset}>
+            <Button className="text-[0.8rem]" variant="danger" onClick={handleReset}>
               <RotateCcw className="h-4 w-4" />{" "}
               {confirmingReset
                 ? t("settings.confirmReset")
