@@ -47,7 +47,7 @@ export default function DashboardPage() {
     .at(-1)
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10">
+    <div className="mx-auto max-w-6xl px-6 pt-7 pb-10">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="font-[var(--font-display)] text-2xl font-semibold tracking-tight">
