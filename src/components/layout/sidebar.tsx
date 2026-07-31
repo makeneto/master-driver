@@ -16,7 +16,6 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslation } from "@/hooks/use-translation"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { LanguageSelect } from "@/components/ui/language-select"
 import Logo from "../ui/logo"
 
@@ -37,10 +36,9 @@ export function Sidebar() {
   ]
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-[240px] flex-col gap-1 border-r border-[var(--color-hairline)] p-4 lg:flex">
+    <aside className="sticky top-0 hidden h-screen w-[240px] flex-col gap-2 border-r border-[var(--color-hairline)] p-4 lg:flex">
       <div className="mb-6 flex items-center justify-between gap-2 px-2 pt-2">
         <Logo />
-        <ThemeToggle />
       </div>
 
       <nav className="flex flex-1 flex-col gap-1">
@@ -75,8 +73,7 @@ export function Sidebar() {
       </nav>
 
       <div className="mb-4" />
-      <LanguageSelect className="mb-3 w-full" />
-      <p className="px-2 text-[11px] tracking-widest text-[var(--color-text-faint)] font-medium flex items-center justify-center gap-1.5">
+      <p className="px-2 text-[11px] tracking-widest text-[var(--color-text-faint)] flex items-center justify-center gap-1.5">
         © Makene Neto <IdCard size={12} /> {currentYear}
       </p>
     </aside>
