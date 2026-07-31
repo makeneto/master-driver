@@ -31,10 +31,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="px-6 pt-10 pb-24">
+      <section className="px-6 pt-7 pb-10">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-10 flex items-end justify-between">
-            <div className="grid">
+          <div className="mb-15 md:mb-0 flex items-end justify-between">
+            <div className="grid md:hidden">
               <span className="text-sm text-[var(--color-text-muted)] mb-0.5">
                 {greeting}
               </span>
@@ -60,7 +60,7 @@ export default function HomePage() {
           </div>
 
           <div className="mb-6 flex items-baseline justify-between">
-            <h2 className="font-[var(--font-display)] text-lg font-semibold tracking-tight">
+            <h2 className="font-[var(--font-display)] text-2xl font-semibold tracking-tight">
               {t("home.categories")}
             </h2>
             <span className="text-xs text-[var(--color-text-faint)]">
