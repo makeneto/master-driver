@@ -40,7 +40,7 @@ export function ExamResults({
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] py-10 lg:py-16"
+      className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] pt-7 pb-10"
     >
       <Card className="flex flex-col items-center gap-8 p-10 text-center">
         <GraduationCap
