@@ -17,6 +17,7 @@ type Dict = typeof pt
 const pt = {
   nav: {
     home: "Home",
+    notebook: "Caderno",
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Modo Exame",
@@ -221,6 +222,7 @@ const pt = {
 const en: Dict = {
   nav: {
     home: "Home",
+    notebook: "Notebook",
     dashboard: "Dashboard",
     quiz: "Quiz",
     examMode: "Exam Mode",
@@ -422,6 +424,7 @@ const en: Dict = {
 const fr: Dict = {
   nav: {
     home: "Accueil",
+    notebook: "Carnet",
     dashboard: "Tableau de bord",
     quiz: "Quiz",
     examMode: "Mode Examen",
