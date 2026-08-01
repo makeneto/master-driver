@@ -76,6 +76,7 @@ const pt = {
     totalStudyTime: "Tempo estudado total: {time}",
   },
   profile: {
+    title: "Perfil do Condutor",
     streakDays: "Dias Consecutivos",
     totalAnswers: "Total de Respostas",
     studyTime: "Tempo Estudado",
@@ -286,6 +287,7 @@ const en: Dict = {
     totalStudyTime: "Total study time: {time}",
   },
   profile: {
+    title: "Driver Profile",
     streakDays: "Day Streak",
     totalAnswers: "Total Answers",
     studyTime: "Study Time",
@@ -496,6 +498,7 @@ const fr: Dict = {
     totalStudyTime: "Temps d'étude total : {time}",
   },
   profile: {
+    title: "Profil du conducteur",
     streakDays: "Jours Consécutifs",
     totalAnswers: "Total de Réponses",
     studyTime: "Temps d'Étude",
