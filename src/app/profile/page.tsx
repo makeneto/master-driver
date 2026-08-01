@@ -36,12 +36,12 @@ export default function ProfilePage() {
     totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0
 
   return (
-    <div className="mx-auto max-w-3xl px-6 pt-7 pb-10">
-      <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">{t("nav.profile")}</h1>
+    <div className="mx-auto sm:max-w-3xl px-6 pt-7 pb-10">
+      <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">{t("profile.title")}</h1>
 
       <Card className="flex flex-col items-center gap-6 p-10">
         <LevelRing xp={profile.xp} />
-
+        
         <div className="flex items-center gap-2">
           {editing ? (
             <>
