@@ -13,6 +13,7 @@ import {
   addXp,
 } from "@/store/slices/profileSlice"
 import { useStudyTimer } from "@/hooks/use-study-timer"
+import { useAnswerOptions } from "@/hooks/use-answer-options"
 import { ExamQuestionCard } from "./exam-question-card"
 import { ExamResults } from "./exam-results"
 import { Button } from "@/components/ui/button"
@@ -21,6 +22,7 @@ import { useTranslation } from "@/hooks/use-translation"
 import type { TopicId } from "@/types"
 
 const EXAM_SIZE = 20
+const ADVANCE_DELAY_MS = 1400
 
 export function ExamContent() {
   const dispatch = useAppDispatch()
@@ -32,6 +34,8 @@ export function ExamContent() {
   const [failedTopics, setFailedTopics] = useState<Set<TopicId>>(new Set())
   const [startedAt, setStartedAt] = useState<number>(0)
   const [finished, setFinished] = useState(false)
+  const [attempted, setAttempted] = useState<number[]>([])
+  const [locked, setLocked] = useState(false)
   const sessionQuestions = useRef(questions)
 
   useStudyTimer(started && !finished)
@@ -45,11 +49,32 @@ export function ExamContent() {
     setStartedAt(Date.now())
     setStarted(true)
     setFinished(false)
+    setAttempted([])
+    setLocked(false)
   }
 
-  function handleEvaluate(correct: boolean) {
-    const q = sessionQuestions.current[index]
-    dispatch(recordAnswer({ topic: q.topic, questionId: q.id, correct }))
+  const currentQuestion = useMemo(
+    () => sessionQuestions.current[index] ?? null,
+    [index],
+  )
+  const options = useAnswerOptions(currentQuestion)
+
+  function handleSelect(optionIndex: number) {
+    if (!currentQuestion || locked) return
+    const chosen = options[optionIndex]
+    const correct = chosen.correct
+
+    // No modo exame não há nova tentativa: a primeira escolha é final.
+    setAttempted([optionIndex])
+    setLocked(true)
+
+    dispatch(
+      recordAnswer({
+        topic: currentQuestion.topic,
+        questionId: currentQuestion.id,
+        correct,
+      }),
+    )
     dispatch(incrementAnswered())
     dispatch(registerStudyDay())
 
@@ -57,34 +82,32 @@ export function ExamContent() {
       setCorrectCount((c) => c + 1)
       dispatch(addXp(10))
     } else {
-      setWrongIds((prev) => [...prev, q.id])
-      setFailedTopics((prev) => new Set(prev).add(q.topic))
+      setWrongIds((prev) => [...prev, currentQuestion.id])
+      setFailedTopics((prev) => new Set(prev).add(currentQuestion.topic))
     }
 
-    if (index + 1 >= sessionQuestions.current.length) {
-      setFinished(true)
-    } else {
-      setIndex((i) => i + 1)
-    }
+    setTimeout(() => {
+      setAttempted([])
+      setLocked(false)
+      if (index + 1 >= sessionQuestions.current.length) {
+        setFinished(true)
+      } else {
+        setIndex((i) => i + 1)
+      }
+    }, ADVANCE_DELAY_MS)
   }
 
-  const currentQuestion = useMemo(
-    () => sessionQuestions.current[index],
-    [index],
-  )
   const seconds = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0
 
   if (!started) {
     return (
       <div className="mx-auto max-w-3xl px-6 pt-7 pb-10">
-        <h1 className="mb-8 font-[var(--font-display)] text-2xl font-semibold tracking-tight">{t("nav.examModeMobile")}</h1>
-
         <Card className="flex flex-col items-center gap-4 p-10 text-center">
           <GraduationCap className="h-8 w-8 text-[var(--color-gold-soft)]" />
           <h1 className="font-[var(--font-display)] text-2xl font-semibold">
             {t("exam.title")}
           </h1>
-          <p className="text-sm text-[var(--color-text-muted)] mb-4">
+          <p className="text-sm text-[var(--color-text-muted)]">
             {t("exam.intro", { count: EXAM_SIZE })}
           </p>
           <Button size="lg" onClick={startExam}>
@@ -112,14 +135,17 @@ export function ExamContent() {
   }
 
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] pt-7 pb-10">
+    <div className="mx-auto max-w-2xl px-6 py-16">
       <AnimatePresence mode="wait">
         {currentQuestion && (
           <ExamQuestionCard
             question={currentQuestion}
             index={index}
             total={sessionQuestions.current.length}
-            onEvaluate={handleEvaluate}
+            options={options}
+            attempted={attempted}
+            locked={locked}
+            onSelect={handleSelect}
           />
         )}
       </AnimatePresence>
