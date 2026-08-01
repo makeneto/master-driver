@@ -5,11 +5,10 @@ import { Toaster } from "sonner"
 import { ReduxProvider } from "@/providers/redux-provider"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { Sidebar } from "@/components/layout/sidebar"
-import { MobileNav } from "@/components/layout/mobile-nav"
 import { HtmlLangSync } from "@/components/layout/html-lang-sync"
 import { cn } from "@/lib/utils"
-import "../css/globals.css"
 import Topbar from "@/components/layout/topbar"
+import "../css/globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -43,9 +42,7 @@ export default function RootLayout({
                 <main className="flex-1 pb-24 lg:pb-0">{children}</main>
               </div>
             </div>
-
-            <MobileNav />
-
+            
             <Toaster
               theme="dark"
               position="top-right"
