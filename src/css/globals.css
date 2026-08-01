@@ -19,6 +19,7 @@
   --color-surface: #ffffff;
   --color-surface-2: #fbfbfd;
   --color-elevated: #ffffff;
+  --color-gray-muted: rgb(10 12 16 / 12%);
   --color-hairline: rgba(10, 12, 16, 0.08);
   --color-hairline-strong: rgba(10, 12, 16, 0.14);
   --color-overlay: rgba(10, 12, 16, 0.045);
@@ -53,7 +54,7 @@
   --color-surface: #12151c;
   --color-surface-2: #171b24;
   --color-elevated: #1b1f29;
-  --color-gray-muted: 0, 0%, 4%, 1;
+  --color-gray-muted: rgb(32 32 32 / 80%);
   --color-hairline: rgba(255, 255, 255, 0.08);
   --color-hairline-strong: rgba(255, 255, 255, 0.14);
   --color-overlay: rgba(255, 255, 255, 0.05);
@@ -172,8 +173,8 @@ body {
 }
 
 @supports (-webkit-touch-callout: none) {
-  input, 
-  textarea, 
+  input,
+  textarea,
   select {
     font-size: 16px;
   }
