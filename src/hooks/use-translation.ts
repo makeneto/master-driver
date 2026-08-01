@@ -1,64 +1,94 @@
-"use client";
+"use client"
 
-import { useCallback, useMemo } from "react";
-import { useAppSelector } from "@/store/hooks";
-import { dictionaries, type Language } from "@/i18n/translations";
+import { useCallback, useMemo } from "react"
+import { useAppSelector } from "@/store/hooks"
+import { dictionaries, type Language } from "@/i18n/translations"
+import {
+  questionTranslations,
+  type QuestionText,
+} from "@/i18n/questions-content"
+import type { Question } from "@/types"
 
-type Vars = Record<string, string | number>;
+type Vars = Record<string, string | number>
 
 function getPath(obj: unknown, path: string): unknown {
   return path.split(".").reduce<unknown>((acc, key) => {
     if (acc && typeof acc === "object" && key in (acc as object)) {
-      return (acc as Record<string, unknown>)[key];
+      return (acc as Record<string, unknown>)[key]
     }
-    return undefined;
-  }, obj);
+    return undefined
+  }, obj)
 }
 
 function interpolate(template: string, vars?: Vars): string {
-  if (!vars) return template;
-  return template.replace(/\{(\w+)\}/g, (_, key) => String(vars[key] ?? `{${key}}`));
+  if (!vars) return template
+  return template.replace(/\{(\w+)\}/g, (_, key) =>
+    String(vars[key] ?? `{${key}}`),
+  )
 }
 
 export function useTranslation() {
-  const language = useAppSelector((s) => s.settings.language) as Language;
-  const dict = dictionaries[language] ?? dictionaries.pt;
+  const language = useAppSelector((s) => s.settings.language) as Language
+  const dict = dictionaries[language] ?? dictionaries.pt
 
   const t = useCallback(
     (key: string, vars?: Vars): string => {
-      const value = getPath(dict, key);
-      if (typeof value !== "string") return key;
-      return interpolate(value, vars);
+      const value = getPath(dict, key)
+      if (typeof value !== "string") return key
+      return interpolate(value, vars)
     },
-    [dict]
-  );
+    [dict],
+  )
 
   const topicText = useCallback(
     (id: string): { name: string; description: string } => {
-      const value = getPath(dict, `topics.${id}`) as { name: string; description: string } | undefined;
-      return value ?? { name: id, description: "" };
+      const value = getPath(dict, `topics.${id}`) as
+        | { name: string; description: string }
+        | undefined
+      return value ?? { name: id, description: "" }
     },
-    [dict]
-  );
+    [dict],
+  )
 
   const levelName = useCallback(
     (id: string): string => {
-      const value = getPath(dict, `levels.${id}`);
-      return typeof value === "string" ? value : id;
+      const value = getPath(dict, `levels.${id}`)
+      return typeof value === "string" ? value : id
     },
-    [dict]
-  );
+    [dict],
+  )
 
   const achievementText = useCallback(
     (id: string): { title: string; description: string } => {
-      const value = getPath(dict, `achievementDefs.${id}`) as { title: string; description: string } | undefined;
-      return value ?? { title: id, description: "" };
+      const value = getPath(dict, `achievementDefs.${id}`) as
+        | { title: string; description: string }
+        | undefined
+      return value ?? { title: id, description: "" }
     },
-    [dict]
-  );
+    [dict],
+  )
+
+  const questionText = useCallback(
+    (question: Question): QuestionText => {
+      if (language === "pt")
+        return { question: question.question, answer: question.answer }
+      const translated = questionTranslations[language]?.[question.id]
+      return (
+        translated ?? { question: question.question, answer: question.answer }
+      )
+    },
+    [language],
+  )
 
   return useMemo(
-    () => ({ t, topicText, levelName, achievementText, language }),
-    [t, topicText, levelName, achievementText, language]
-  );
+    () => ({
+      t,
+      topicText,
+      levelName,
+      achievementText,
+      questionText,
+      language,
+    }),
+    [t, topicText, levelName, achievementText, questionText, language],
+  )
 }
