@@ -8,6 +8,7 @@ import { ThemeToggle } from "../ui/theme-toggle"
 import { LanguageSelect } from "../ui/language-select"
 import { Button } from "../ui/button"
 import { PanelLeft } from "lucide-react"
+import { MobileSidebar } from "./mobile-sidebar"
 
 export default function Topbar() {
   const { t } = useTranslation()
@@ -29,13 +30,13 @@ export default function Topbar() {
   }, [t, hour])
 
   return (
-    <header className="w-full bg-[var(--color-base)] z-10 sticky top-0 flex items-center justify-between gap-1 border-b border-[var(--color-hairline)] px-4 sm:px-6 py-3.5 sm:py-4">
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="sm">
-          <PanelLeft />
-        </Button>
+    <header className="w-full bg-[var(--color-base)] z-10 sticky top-0 flex items-center justify-between gap-1 border-b border-[var(--color-gray-muted)] px-4 sm:px-6 py-3.5 sm:py-4">
+      <div className="block sm:hidden">
+        <MobileSidebar />
+      </div>
 
-        <p className="hidden sm:block text-sm font-[var(--font-display)] font-semibold tracking-tight">
+      <div className="hidden sm:flex items-center gap-3">
+        <p className="text-sm font-[var(--font-display)] font-semibold tracking-tight">
           <span className="text-[var(--color-text-muted)]">{greeting},</span>{" "}
           {firstName}
           <span className="text-[var(--color-text-muted)]">.</span>
