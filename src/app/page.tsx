@@ -45,22 +45,10 @@ export default function HomePage() {
                 {firstName}
               </Link>
             </div>
-
-            <Link
-              href="/profile"
-              className="lg:hidden w-9.5 h-9.5 rounded-full mb-2 dark:bg-white bg-amber-400"
-            >
-              <Image
-                src="/avatar.svg"
-                alt={`${firstName}'s Profile`}
-                width={1900}
-                height={900}
-              />
-            </Link>
           </div>
 
           <div className="mb-6 flex items-baseline justify-between">
-            <h2 className="font-[var(--font-display)] text-2xl font-semibold tracking-tight">
+            <h2 className="font-[var(--font-display)] text-xl md:text-2xl font-semibold tracking-tight">
               {t("home.categories")}
             </h2>
             <span className="text-xs text-[var(--color-text-faint)]">
