@@ -28,7 +28,6 @@ import {
   endSession,
 } from "@/store/slices/quizSlice"
 import { QuestionCard } from "./question-card"
-import { SessionComplete } from "./session-complete"
 import {
   Card,
   CardContent,
@@ -39,11 +38,15 @@ import {
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { AlertTriangle, Target } from "lucide-react"
 import { useTranslation } from "@/hooks/use-translation"
+import { useAnswerOptions } from "@/hooks/use-answer-options"
+import { SessionAnswer, SessionComplete } from "./session-complete"
+
+const ADVANCE_DELAY_MS = 1400
 
 export function QuizContent() {
   const params = useSearchParams()
   const topicParam = params.get("topic")
-  const modeParam = params.get("mode")
+  const modeParam = params.get("mode") // "review-wrong" | "review-weak" | null
 
   const dispatch = useAppDispatch()
   const quiz = useAppSelector((s) => s.quiz)
@@ -53,8 +56,10 @@ export function QuizContent() {
   const profile = useAppSelector((s) => s.profile)
   const { t, topicText, achievementText } = useTranslation()
 
-  const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null)
+  const [attempted, setAttempted] = useState<number[]>([])
+  const [locked, setLocked] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [answered, setAnswered] = useState<SessionAnswer[]>([])
   const startedKey = useRef<string | null>(null)
 
   useStudyTimer(quiz.active)
@@ -98,6 +103,8 @@ export function QuizContent() {
       }),
     )
     startedKey.current = sessionKey
+    setAnswered([])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionKey, pool])
 
   const currentQuestion = useMemo(() => {
@@ -105,48 +112,71 @@ export function QuizContent() {
     return questions.find((q) => q.id === id) ?? null
   }, [quiz.questionIds, quiz.currentIndex])
 
-  function handleEvaluate(correct: boolean) {
-    if (!currentQuestion) return
-    setFeedback(correct ? "correct" : "wrong")
-    dispatch(submitEvaluation({ correct }))
-    dispatch(
-      recordAnswer({
-        topic: currentQuestion.topic,
-        questionId: currentQuestion.id,
-        correct,
-      }),
-    )
-    dispatch(incrementAnswered())
-    dispatch(registerStudyDay())
+  const options = useAnswerOptions(currentQuestion)
 
-    const newStreak = correct
-      ? topicsStats[currentQuestion.topic].streak + 1
-      : 0
-    if (correct) {
-      const xp = calculateAnswerXp(newStreak)
-      dispatch(addXp(xp))
-      setShowConfetti(true)
-      setTimeout(() => setShowConfetti(false), 1400)
+  function handleSelect(index: number) {
+    if (!currentQuestion || locked || attempted.includes(index)) return
+    const chosen = options[index]
+    const isFirstPick = attempted.length === 0
+    setAttempted((prev) => [...prev, index])
+
+    if (isFirstPick) {
+      // Só a primeira escolha conta para estatísticas, XP e conquistas.
+      setAnswered((prev) => [
+        ...prev,
+        {
+          question: currentQuestion,
+          correct: chosen.correct,
+          selectedText: chosen.text,
+        },
+      ])
+
+      dispatch(submitEvaluation({ correct: chosen.correct }))
+      dispatch(
+        recordAnswer({
+          topic: currentQuestion.topic,
+          questionId: currentQuestion.id,
+          correct: chosen.correct,
+        }),
+      )
+      dispatch(incrementAnswered())
+      dispatch(registerStudyDay())
+
+      const newStreak = chosen.correct
+        ? topicsStats[currentQuestion.topic].streak + 1
+        : 0
+      if (chosen.correct) {
+        const xp = calculateAnswerXp(newStreak)
+        dispatch(addXp(xp))
+        setShowConfetti(true)
+        setTimeout(() => setShowConfetti(false), 1400)
+      }
+
+      const toUnlock = evaluateAchievements({
+        totalAnswered: profile.totalAnswered + 1,
+        streakDays: profile.streakDays + (profile.lastStudyDate ? 0 : 1),
+        topics: topicsStats,
+        unlocked: Object.fromEntries(
+          Object.entries(achievements).map(([k, v]) => [k, v.unlocked]),
+        ) as never,
+        currentTopicStreak: newStreak,
+      })
+      toUnlock.forEach((id) => {
+        dispatch(unlockAchievement(id))
+        toast.success(`${achievementText(id).title}`)
+      })
     }
 
-    const toUnlock = evaluateAchievements({
-      totalAnswered: profile.totalAnswered + 1,
-      streakDays: profile.streakDays + (profile.lastStudyDate ? 0 : 1),
-      topics: topicsStats,
-      unlocked: Object.fromEntries(
-        Object.entries(achievements).map(([k, v]) => [k, v.unlocked]),
-      ) as never,
-      currentTopicStreak: newStreak,
-    })
-    toUnlock.forEach((id) => {
-      dispatch(unlockAchievement(id))
-      toast.success(`${achievementText(id).title}`)
-    })
-
-    setTimeout(() => {
-      setFeedback(null)
-      dispatch(nextQuestion())
-    }, 550)
+    // No quiz, errar não avança logo: o utilizador pode escolher a outra opção.
+    // Só avançamos quando a opção correta é encontrada.
+    if (chosen.correct) {
+      setLocked(true)
+      setTimeout(() => {
+        setAttempted([])
+        setLocked(false)
+        dispatch(nextQuestion())
+      }, ADVANCE_DELAY_MS)
+    }
   }
 
   if (pool.length === 0) {
@@ -198,9 +228,13 @@ export function QuizContent() {
           <SessionComplete
             correct={quiz.sessionCorrect}
             wrong={quiz.sessionWrong}
+            answered={answered}
             onRestart={() => {
               dispatch(endSession())
               startedKey.current = null
+              setAnswered([])
+              setAttempted([])
+              setLocked(false)
             }}
           />
         ) : currentQuestion ? (
@@ -208,10 +242,10 @@ export function QuizContent() {
             question={currentQuestion}
             index={quiz.currentIndex}
             total={quiz.questionIds.length}
-            showAnswer={quiz.showAnswer}
-            feedback={feedback}
-            onReveal={() => dispatch(revealAnswer())}
-            onEvaluate={handleEvaluate}
+            options={options}
+            attempted={attempted}
+            locked={locked}
+            onSelect={handleSelect}
           />
         ) : null}
       </AnimatePresence>
@@ -222,7 +256,7 @@ export function QuizContent() {
 function TopicPicker() {
   const { t, topicText } = useTranslation()
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] pt-7 pb-10">
+    <div className="mx-4 lg:mx-auto lg:max-w-4xl xl:max-w-[50%] pt-7 pb-10">
       <h1 className="mb-2 font-[var(--font-display)] text-2xl font-semibold tracking-tight">
         {t("quiz.chooseTopic")}
       </h1>
@@ -235,7 +269,7 @@ function TopicPicker() {
           return (
             <Link key={topic.id} href={`/quiz?topic=${topic.id}`}>
               <Card className="glass-hover flex items-center gap-4 p-4 h-full transition-colors hover:border-[var(--color-hairline-strong)]">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-overlay)]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--color-gold)]/20 to-[var(--color-teal)]/20 text-xl ring-1 ring-inset ring-[var(--color-hairline-strong)]">
                   <DynamicIcon
                     name={topic.icon}
                     className="h-5 w-5 text-[var(--color-gold-soft)]"
@@ -243,7 +277,9 @@ function TopicPicker() {
                 </div>
                 <CardHeader className="p-0">
                   <CardTitle className="text-sm">{name}</CardTitle>
-                  <CardDescription className="line-clamp">{description}</CardDescription>
+                  <CardDescription className="line-clamp">
+                    {description}
+                  </CardDescription>
                 </CardHeader>
               </Card>
             </Link>
