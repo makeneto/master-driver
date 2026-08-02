@@ -26,7 +26,7 @@ const pt = {
     profile: "Perfil",
     settings: "Ajustes",
   },
-  greeting:{
+  greeting: {
     morning: "Bom dia",
     afternoon: "Boa tarde",
     evening: "Boa noite",
@@ -34,6 +34,7 @@ const pt = {
   home: {
     categories: "Categorias",
     categoriesSummary: "{count} categorias · {questions} perguntas",
+    quickQuiz: "Quiz Rápido",
   },
   quiz: {
     chooseTopic: "Escolhe um tópico",
@@ -224,6 +225,13 @@ const pt = {
       description: "Respondeste a 1000 perguntas no total.",
     },
   },
+  donate: {
+    titleCard: "Doação",
+    descriptionCard:
+      "Seu apoio me ajuda a continuar criando e mantendo este e outros projetos gratuitos.",
+    title: "Donate",
+    description: "Support my work by donating.",
+  },
 }
 
 const en: Dict = {
@@ -238,7 +246,7 @@ const en: Dict = {
     profile: "Profile",
     settings: "Settings",
   },
-  greeting:{
+  greeting: {
     morning: "Good morning",
     afternoon: "Good Afternoon",
     evening: "Good evening",
@@ -246,6 +254,7 @@ const en: Dict = {
   home: {
     categories: "Categories",
     categoriesSummary: "{count} categories · {questions} questions",
+    quickQuiz: "Quick Quiz",
   },
   quiz: {
     chooseTopic: "Choose a topic",
@@ -433,6 +442,13 @@ const en: Dict = {
       description: "You answered 1000 questions in total.",
     },
   },
+  donate: {
+    titleCard: "Donation",
+    descriptionCard:
+      "Your support helps me continue creating and maintaining this and other free projects.",
+    title: "Donate",
+    description: "Support my work by donating.",
+  },
 }
 
 const fr: Dict = {
@@ -447,7 +463,7 @@ const fr: Dict = {
     profile: "Profil",
     settings: "Paramètres",
   },
-  greeting:{
+  greeting: {
     morning: "Bonjour",
     afternoon: "Bon après-midi",
     evening: "Bonsoir",
@@ -455,6 +471,7 @@ const fr: Dict = {
   home: {
     categories: "Catégories",
     categoriesSummary: "{count} catégories · {questions} questions",
+    quickQuiz: "Quiz Rapide",
   },
   quiz: {
     chooseTopic: "Choisis un sujet",
@@ -645,6 +662,13 @@ const fr: Dict = {
       title: "1000 Questions",
       description: "Tu as répondu à 1000 questions au total.",
     },
+  },
+  donate: {
+    titleCard: "Don",
+    descriptionCard:
+      "Votre soutien me permet de continuer à créer et à maintenir ce projet et d'autres projets gratuits.",
+    title: "Donate",
+    description: "Support my work by donating.",
   },
 }
 
