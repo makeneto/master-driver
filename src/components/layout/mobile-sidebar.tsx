@@ -5,16 +5,18 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+
 import { useNavItems } from "@/hooks/use-nav-items"
-import { LanguageSelect } from "@/components/ui/language-select"
 import { Button } from "../ui/button"
 import Logo from "../ui/logo"
 import { cn } from "@/lib/utils"
+import DonationCard from "../features/donation/donation-card"
 
 export function MobileSidebar() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const navItems = useNavItems()
+  const currentYear = new Date().getFullYear()
 
   return (
     <>
@@ -22,7 +24,7 @@ export function MobileSidebar() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Abrir menu"
-        className="glass-hover flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-text)] lg:hidden"
+        className="glass-hover flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-text)] md:hidden"
       >
         <Menu className="h-6 w-6" />
       </button>
@@ -92,9 +94,12 @@ export function MobileSidebar() {
                 })}
               </nav>
 
-              <p className="px-2 text-[10px] text-center tracking-widest text-[var(--color-text-faint)]">
-                © Makene Neto | {new Date().getFullYear()}
-              </p>
+              <section className="grid gap-3">
+                <DonationCard />
+                <p className="text-[10px] text-center tracking-widest text-[var(--color-text-muted)]">
+                  © Makene Neto | {currentYear}
+                </p>
+              </section>
             </motion.aside>
           </>
         )}
