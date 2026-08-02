@@ -36,7 +36,7 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
-import { AlertTriangle, Target } from "lucide-react"
+import { AlertTriangle, Target, Zap } from "lucide-react"
 import { useTranslation } from "@/hooks/use-translation"
 import { useAnswerOptions } from "@/hooks/use-answer-options"
 import { SessionAnswer, SessionComplete } from "./session-complete"
@@ -67,6 +67,7 @@ export function QuizContent() {
   const sessionKey = `${topicParam ?? "all"}::${modeParam ?? "practice"}`
 
   const pool = useMemo(() => {
+    if (modeParam === "quick") return questions
     if (modeParam === "review-wrong") {
       const wrongIds = new Set(
         Object.values(records)
@@ -94,7 +95,11 @@ export function QuizContent() {
   useEffect(() => {
     if (startedKey.current === sessionKey) return
     if (pool.length === 0) return
-    const session = buildSession(pool, records)
+    const session = buildSession(
+      pool,
+      records,
+      modeParam === "quick" ? 20 : undefined,
+    )
     dispatch(
       startSession({
         mode: (modeParam as never) ?? "practice",
@@ -187,7 +192,7 @@ export function QuizContent() {
     quiz.currentIndex >= quiz.questionIds.length && quiz.questionIds.length > 0
 
   return (
-    <div className="mx-4 lg:mx-auto lg:max-w-[70%] xl:max-w-[50%] px-6 pt-7 pb-10">
+    <div className="mx-auto max-w-2xl px-6 py-16">
       {showConfetti && (
         <ReactConfetti
           numberOfPieces={140}
@@ -210,6 +215,11 @@ export function QuizContent() {
             className="h-4 w-4 text-[var(--color-gold-soft)]"
           />
           {topicText(topicParam).name}
+        </div>
+      )}
+      {modeParam === "quick" && !isDone && (
+        <div className="mb-6 flex items-center gap-2 text-sm text-[var(--color-gold)]">
+          <Zap className="h-4 w-4" /> {t("quiz.quickQuizBadge")}
         </div>
       )}
       {modeParam === "review-wrong" && !isDone && (
