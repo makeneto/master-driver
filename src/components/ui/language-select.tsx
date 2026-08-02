@@ -17,9 +17,9 @@ import {
 const LANGUAGES: Language[] = ["pt", "en", "fr"]
 
 const LANGUAGE_FLAG_IMAGES: Record<Language, string> = {
-  pt: "/flags/angola-flag.png",
-  en: "/flags/usa-flag.png",
-  fr: "/flags/france-flag.png",
+  pt: "/angola-flag.png",
+  en: "/usa-flag.png",
+  fr: "/france-flag.png",
 }
 
 export function LanguageSelect({ className }: { className?: string }) {
