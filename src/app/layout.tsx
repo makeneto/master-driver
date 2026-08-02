@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
   icons: "/favicon.ico",
-  title: "Master Drive | Aprenda a conduzir jogando",
+  title: "Master Drive — Aprenda a conduzir jogando",
   description:
     "Estude para o exame de condução com um sistema de Active Recall gamificado: XP, níveis, conquistas e revisão inteligente.",
 }
