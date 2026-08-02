@@ -21,8 +21,9 @@ export default function ProfilePage() {
   const profile = useAppSelector((s) => s.profile)
   const topics = useAppSelector((s) => s.statistics.topics)
   const [editing, setEditing] = useState(false)
-  const [draft, setDraft] = useState(profile.name)
   const { t, topicText } = useTranslation()
+  const displayName = profile.name.trim() || t("profile.defaultName")
+  const [draft, setDraft] = useState(profile.name)
 
   const totalAnswered = Object.values(topics).reduce(
     (sum, tp) => sum + tp.totalQuestions,
@@ -54,7 +55,7 @@ export default function ProfilePage() {
                 size="icon"
                 variant="secondary"
                 onClick={() => {
-                  dispatch(setName(draft.trim() || "Candidato"))
+                  dispatch(setName(draft.trim() || t("profile.defaultName")))
                   setEditing(false)
                 }}
               >
@@ -64,7 +65,7 @@ export default function ProfilePage() {
           ) : (
             <>
               <h1 className="font-[var(--font-display)] text-xl font-semibold">
-                {profile.name}
+                {displayName}
               </h1>
               <button
                 onClick={() => setEditing(true)}
