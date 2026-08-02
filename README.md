@@ -1,10 +1,10 @@
-# 🚗 Master Driver
+# 🚗 Driving Master
 
 Premium, gamified web application for studying for the driving test using **Active Recall**.
 
 ## Stack
 
-Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Redux Toolkit + Redux Persist · Shadcn/ui · Framer Motion · Recharts · Sonner · React Confetti · React CountUp
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Redux Toolkit + Redux Persist · Framer Motion · Recharts · Sonner · React Confetti · React CountUp
 
 ## How to run the project
 
@@ -58,6 +58,6 @@ The theme automatically follows the device preference (`prefers-color-scheme`) o
 
 ## Persistence
 
-All progress (XP, level, statistics by category, achievements, settings, and study history) is automatically saved in `localStorage` via Redux Persist.
+All progress (XP, level, category statistics, achievements, settings, and study history) is automatically saved in `localStorage` via Redux Persist.
 
 You can export/import this progress on the **Settings** page.
