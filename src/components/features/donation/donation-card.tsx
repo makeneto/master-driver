@@ -9,7 +9,7 @@ export default function DonationCard() {
       <h1 className="text-sm font-medium text-[#664d06] dark:text-[#d0b260]">Donation</h1>
       <p className="text-xs text-[#6b5f3fbc] dark:text-[#b2aa94]">
         Please consider supporting my work by donating. Your support helps me
-        continue creating and maintaining this and others projects.
+        continue creating and maintaining this and others free projects.
       </p>
     </Link>
   )
