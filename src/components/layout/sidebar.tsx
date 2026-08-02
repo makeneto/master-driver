@@ -10,6 +10,7 @@ import { useSidebarOpen } from "@/hooks/use-sidebar-open"
 import { LanguageSelect } from "@/components/ui/language-select"
 import Logo from "../ui/logo"
 import { Button } from "../ui/button"
+import DonationCard from "../features/donation/donation-card"
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -81,9 +82,12 @@ export function Sidebar() {
             })}
           </nav>
 
-          <p className="px-2 text-[10px] text-center tracking-widest text-[var(--color-text-faint)]">
-            © Makene Neto | {currentYear}
-          </p>
+          <section className="grid gap-3">
+            <DonationCard />
+            <p className="text-[10px] text-center tracking-widest text-[var(--color-text-muted)]">
+              © Makene Neto | {currentYear}
+            </p>
+          </section>
         </div>
       </motion.aside>
 
