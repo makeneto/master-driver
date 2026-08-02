@@ -8,6 +8,8 @@ import { useTranslation } from "@/hooks/use-translation"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Zap } from "lucide-react"
 
 export default function HomePage() {
   const topicsStats = useAppSelector((s) => s.statistics.topics)
@@ -47,16 +49,25 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mb-6 flex items-baseline justify-between">
-            <h2 className="font-[var(--font-display)] text-xl md:text-2xl font-semibold tracking-tight">
-              {t("home.categories")}
-            </h2>
-            <span className="text-xs text-[var(--color-text-faint)]">
-              {t("home.categoriesSummary", {
-                count: TOPICS.length,
-                questions: questions.length,
-              })}
-            </span>
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <h2 className="font-[var(--font-display)] text-xl md:text-2xl font-semibold tracking-tight">
+                {t("home.categories")}
+              </h2>
+              <span className="text-xs text-[var(--color-text-faint)]">
+                {t("home.categoriesSummary", {
+                  count: TOPICS.length,
+                  questions: questions.length,
+                })}
+              </span>
+            </div>
+
+            <Button variant="gold" size="sm" asChild>
+              <Link href="/quiz" className="flex items-center gap-1">
+                <Zap />
+                {t("home.quickQuiz")}
+              </Link>
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
