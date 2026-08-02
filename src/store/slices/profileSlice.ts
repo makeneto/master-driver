@@ -12,7 +12,7 @@ type State = {
 };
 
 const initialState: State = {
-  name: "Candidato",
+  name: "",
   xp: 0,
   totalAnswered: 0,
   studySeconds: 0,
