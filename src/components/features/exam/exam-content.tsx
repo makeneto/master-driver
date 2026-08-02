@@ -101,7 +101,7 @@ export function ExamContent() {
 
   if (!started) {
     return (
-      <div className="mx-auto max-w-3xl px-6 pt-7 pb-10">
+      <div className="mx-auto max-w-2xl px-6 py-16">
         <Card className="flex flex-col items-center gap-4 p-10 text-center">
           <GraduationCap className="h-8 w-8 text-[var(--color-gold-soft)]" />
           <h1 className="font-[var(--font-display)] text-2xl font-semibold">
