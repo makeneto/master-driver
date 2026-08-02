@@ -52,6 +52,13 @@ const pt = {
     restart: "Repetir",
     backHome: "Voltar à Home",
     loading: "A carregar…",
+    quickQuizBadge: "Quiz Rápido",
+  },
+  quickQuizToast: {
+    title: "Que tal um Quiz Rápido?",
+    description:
+      "20 perguntas aleatórias de várias categorias, ideal para aquecer.",
+    action: "Começar",
   },
   dashboard: {
     title: "Dashboard",
@@ -86,6 +93,7 @@ const pt = {
     progressByCategoryDesc: "Resumo rápido de todas as categorias.",
     xpToNext: "{xp} XP para {level}",
     maxLevel: "Nível máximo atingido",
+    defaultName: "Candidato",
   },
   achievements: {
     title: "Conquistas",
@@ -271,6 +279,13 @@ const en: Dict = {
     restart: "Restart",
     backHome: "Back to Home",
     loading: "Loading…",
+    quickQuizBadge: "Quick Quiz",
+  },
+  quickQuizToast: {
+    title: "How about a Quick Quiz?",
+    description:
+      "20 random questions from several categories, great for warming up.",
+    action: "Start",
   },
   dashboard: {
     title: "Dashboard",
@@ -305,6 +320,7 @@ const en: Dict = {
     progressByCategoryDesc: "Quick overview of every category.",
     xpToNext: "{xp} XP to {level}",
     maxLevel: "Max level reached",
+    defaultName: "Candidate",
   },
   achievements: {
     title: "Achievements",
@@ -490,6 +506,13 @@ const fr: Dict = {
     restart: "Recommencer",
     backHome: "Retour à l'accueil",
     loading: "Chargement…",
+    quickQuizBadge: "Quiz Rapide",
+  },
+  quickQuizToast: {
+    title: "Et si on faisait un Quiz Rapide ?",
+    description:
+      "20 questions aléatoires de plusieurs catégories, parfait pour s'échauffer.",
+    action: "Commencer",
   },
   dashboard: {
     title: "Tableau de bord",
@@ -524,6 +547,7 @@ const fr: Dict = {
     progressByCategoryDesc: "Aperçu rapide de toutes les catégories.",
     xpToNext: "{xp} XP jusqu'à {level}",
     maxLevel: "Niveau maximum atteint",
+    defaultName: "Candidat",
   },
   achievements: {
     title: "Succès",
