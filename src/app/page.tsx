@@ -7,7 +7,6 @@ import { TopicCard } from "@/components/features/home/topic-card"
 import { useTranslation } from "@/hooks/use-translation"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Zap } from "lucide-react"
 
@@ -15,7 +14,7 @@ export default function HomePage() {
   const topicsStats = useAppSelector((s) => s.statistics.topics)
   const { t } = useTranslation()
   const profile = useAppSelector((s) => s.profile)
-  const firstName = profile.name.split(" ")[0]
+  const firstName = profile.name.split(" ")[0] || t("profile.defaultName")
 
   const now = new Date()
   const hour = now.getHours()
@@ -63,7 +62,7 @@ export default function HomePage() {
             </div>
 
             <Button variant="gold" size="sm" asChild>
-              <Link href="/quiz" className="flex items-center gap-1">
+              <Link href="/quiz?mode=quick" className="flex items-center gap-1">
                 <Zap />
                 {t("home.quickQuiz")}
               </Link>
