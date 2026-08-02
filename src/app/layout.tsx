@@ -9,6 +9,7 @@ import { HtmlLangSync } from "@/components/layout/html-lang-sync"
 import { cn } from "@/lib/utils"
 import Topbar from "@/components/layout/topbar"
 import "../css/globals.css"
+import { QuickQuizToast } from "@/components/layout/quick-quiz-toast"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -34,9 +35,10 @@ export default function RootLayout({
         <ThemeProvider>
           <ReduxProvider>
             <HtmlLangSync />
+            <QuickQuizToast />
+
             <div className="flex min-h-screen">
               <Sidebar />
-
               <div className="w-full">
                 <Topbar />
                 <main className="flex-1 pb-24 lg:pb-0">{children}</main>
