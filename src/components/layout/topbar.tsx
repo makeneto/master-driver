@@ -2,18 +2,15 @@
 
 import { useTranslation } from "@/hooks/use-translation"
 import { useAppSelector } from "@/store/hooks"
-import Link from "next/link"
 import { useEffect, useState } from "react"
 import { ThemeToggle } from "../ui/theme-toggle"
 import { LanguageSelect } from "../ui/language-select"
-import { Button } from "../ui/button"
-import { PanelLeft } from "lucide-react"
 import { MobileSidebar } from "./mobile-sidebar"
 
 export default function Topbar() {
   const { t } = useTranslation()
   const profile = useAppSelector((s) => s.profile)
-  const firstName = profile.name.split(" ")[0]
+  const firstName = profile.name.split(" ")[0] || t("profile.defaultName")
 
   const now = new Date()
   const hour = now.getHours()
@@ -31,11 +28,11 @@ export default function Topbar() {
 
   return (
     <header className="w-full bg-[var(--color-base)] z-10 sticky top-0 flex items-center justify-between gap-1 border-b border-[var(--color-gray-muted)] px-4 sm:px-6 py-3.5 sm:py-4">
-      <div className="block sm:hidden">
+      <div className="block md:hidden">
         <MobileSidebar />
       </div>
 
-      <div className="hidden sm:flex items-center gap-3">
+      <div className="hidden md:flex items-center gap-3">
         <p className="text-sm font-[var(--font-display)] font-semibold tracking-tight">
           <span className="text-[var(--color-text-muted)]">{greeting},</span>{" "}
           {firstName}
