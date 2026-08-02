@@ -55,9 +55,9 @@ const pt = {
     quickQuizBadge: "Quiz Rápido",
   },
   quickQuizToast: {
-    title: "Que tal um Quiz Rápido?",
+    title: "Que tal um quiz rápido?",
     description:
-      "20 perguntas aleatórias de várias categorias, ideal para aquecer.",
+      "20 perguntas aleatórias.",
     action: "Começar",
   },
   dashboard: {
@@ -282,9 +282,9 @@ const en: Dict = {
     quickQuizBadge: "Quick Quiz",
   },
   quickQuizToast: {
-    title: "How about a Quick Quiz?",
+    title: "How about a quick quiz?",
     description:
-      "20 random questions from several categories, great for warming up.",
+      "20 random questions.",
     action: "Start",
   },
   dashboard: {
@@ -509,9 +509,9 @@ const fr: Dict = {
     quickQuizBadge: "Quiz Rapide",
   },
   quickQuizToast: {
-    title: "Et si on faisait un Quiz Rapide ?",
+    title: "Et si on faisait un quiz rapide?",
     description:
-      "20 questions aléatoires de plusieurs catégories, parfait pour s'échauffer.",
+      "20 questions aléatoires.",
     action: "Commencer",
   },
   dashboard: {
