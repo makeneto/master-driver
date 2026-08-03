@@ -56,8 +56,7 @@ const pt = {
   },
   quickQuizToast: {
     title: "Que tal um quiz rápido?",
-    description:
-      "20 perguntas aleatórias.",
+    description: "20 perguntas aleatórias.",
     action: "Começar",
   },
   dashboard: {
@@ -240,6 +239,11 @@ const pt = {
     title: "Donate",
     description: "Support my work by donating.",
   },
+  search: {
+    label: "Pesquisar tópico",
+    placeholder: "O que vai estudar?",
+    noResults: "Nenhum tópico encontrado para o idioma selecionado.",
+  },
 }
 
 const en: Dict = {
@@ -283,8 +287,7 @@ const en: Dict = {
   },
   quickQuizToast: {
     title: "How about a quick quiz?",
-    description:
-      "20 random questions.",
+    description: "20 random questions.",
     action: "Start",
   },
   dashboard: {
@@ -465,6 +468,11 @@ const en: Dict = {
     title: "Donate",
     description: "Support my work by donating.",
   },
+  search: {
+    label: "Search topic",
+    placeholder: "What to study?",
+    noResults: "No topics found for the selected language.",
+  },
 }
 
 const fr: Dict = {
@@ -510,8 +518,7 @@ const fr: Dict = {
   },
   quickQuizToast: {
     title: "Et si on faisait un quiz rapide?",
-    description:
-      "20 questions aléatoires.",
+    description: "20 questions aléatoires.",
     action: "Commencer",
   },
   dashboard: {
@@ -693,6 +700,11 @@ const fr: Dict = {
       "Votre soutien me permet de continuer à créer et à maintenir ce projet et d'autres projets gratuits.",
     title: "Donate",
     description: "Support my work by donating.",
+  },
+  search: {
+    label: "Rechercher un sujet",
+    placeholder: "Que étudier ?",
+    noResults: "Aucun sujet trouvé pour la langue sélectionnée.",
   },
 }
 
