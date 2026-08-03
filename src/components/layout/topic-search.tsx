@@ -3,53 +3,25 @@
 import Link from "next/link"
 import { useMemo, useRef, useState } from "react"
 import { Search, X } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { TOPICS } from "@/constants/topics"
-import { useTranslation } from "@/hooks/use-translation"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { cn } from "@/lib/utils"
+import { useTopicSearch } from "@/hooks/use-topic-search"
+import { TOPICS } from "@/constants/topics"
 
 export function TopicSearch({ className }: { className?: string }) {
-  const { t, topicText } = useTranslation()
-  const router = useRouter()
-  const [query, setQuery] = useState("")
-  const [isFocused, setIsFocused] = useState(false)
-  const inputRef = useRef<HTMLInputElement | null>(null)
-
-  const normalizedQuery = query.trim().toLowerCase()
-  const showResults = isFocused && normalizedQuery.length > 0
-
-  const results = useMemo(() => {
-    if (!normalizedQuery) return []
-
-    return TOPICS.map((topic) => {
-      const { name, description } = topicText(topic.id)
-      const titleMatch = name.toLowerCase().includes(normalizedQuery)
-      const descriptionMatch = description
-        .toLowerCase()
-        .includes(normalizedQuery)
-
-      return { topic, titleMatch, descriptionMatch }
-    })
-      .filter(
-        ({ titleMatch, descriptionMatch }) => titleMatch || descriptionMatch,
-      )
-      .sort((a, b) => {
-        if (a.titleMatch === b.titleMatch) return 0
-        return a.titleMatch ? -1 : 1
-      })
-      .slice(0, 5)
-      .map(({ topic }) => topic)
-  }, [normalizedQuery, topicText])
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (results.length > 0) {
-      router.push(`/quiz?topic=${results[0].id}`)
-      setQuery("")
-    }
-  }
-
+  const {
+    t,
+    topicText,
+    inputRef,
+    query,
+    setQuery,
+    isFocused,
+    setIsFocused,
+    showResults,
+    results,
+    handleSubmit,
+    clearOrFocus,
+  } = useTopicSearch()
   return (
     <div
       className={cn("relative w-full max-w-[520px] hidden sm:block", className)}
@@ -80,13 +52,7 @@ export function TopicSearch({ className }: { className?: string }) {
 
         <button
           type="button"
-          onClick={() => {
-            if (!query) {
-              inputRef.current?.focus()
-            } else {
-              setQuery("")
-            }
-          }}
+          onClick={clearOrFocus}
           className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-[var(--color-text-muted)] transition hover:text-[var(--color-text)] cursor-pointer"
           aria-label={query ? "Limpar pesquisa" : "Pesquisar"}
         >
