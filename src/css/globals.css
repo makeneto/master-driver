@@ -24,6 +24,7 @@
   --color-hairline-strong: rgba(10, 12, 16, 0.14);
   --color-overlay: rgba(10, 12, 16, 0.045);
   --color-overlay-strong: rgba(10, 12, 16, 0.07);
+  --color-gauge-track: #e1d7c1;
 
   /* Texto */
   --color-text: #281e12;
@@ -59,6 +60,7 @@
   --color-hairline-strong: rgba(255, 255, 255, 0.14);
   --color-overlay: rgba(255, 255, 255, 0.05);
   --color-overlay-strong: rgba(255, 255, 255, 0.07);
+  --color-gauge-track: rgba(255,255,255,0.08);
 
   --color-text: #edeff3;
   --color-text-muted: #8b93a1;
