@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   MASTER DRIVE — Design tokens ("Night Drive" / "Day Drive")
+   MASTER DRIVER — Design tokens ("Night Drive" / "Day Drive")
    Tema claro por defeito; tema escuro ativado pela classe .dark
    (controlada pelo next-themes, com deteção da preferência do SO).
    ============================================================ */
@@ -52,7 +52,7 @@
 /* Tema escuro ("Night Drive") — aplicado quando <html> tem a classe .dark */
 .dark {
   --color-base: #000000;
-  --color-surface: #12151c;
+  --color-surface: #101010;
   --color-surface-2: #171b24;
   --color-elevated: #1b1f29;
   --color-gray-muted: rgb(32 32 32 / 80%);
