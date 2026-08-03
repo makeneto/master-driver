@@ -28,7 +28,7 @@ export function Sidebar() {
             ? { type: "spring", stiffness: 320, damping: 34 }
             : { duration: 0 }
         }
-        className="sticky top-0 hidden h-screen shrink-0 overflow-hidden border-r border-[var(--color-gray-muted)] lg:block"
+        className="hidden sm:block sticky top-0  h-screen shrink-0 overflow-hidden border-r border-[var(--color-gray-muted)] "
         style={{ borderRightWidth: open ? 1 : 0 }}
       >
         <div className="flex h-screen w-[240px] flex-col gap-1 p-4">
@@ -101,7 +101,7 @@ export function Sidebar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -12 }}
             transition={{ duration: 0.2 }}
-            className="glass fixed left-0 top-18 z-40 hidden h-11 w-8 items-center justify-center rounded-r-full border border-l-0 border-[var(--color-hairline-strong)] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)] lg:flex"
+            className="glass fixed left-0 top-18 z-40 hidden sm:flex h-11 w-8 items-center justify-center rounded-r-full border border-l-0 border-[var(--color-hairline-strong)] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
           >
             <PanelLeftOpen className="h-4 w-4" />
           </motion.button>
