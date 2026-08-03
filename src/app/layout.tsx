@@ -8,14 +8,14 @@ import { Sidebar } from "@/components/layout/sidebar"
 import { HtmlLangSync } from "@/components/layout/html-lang-sync"
 import { cn } from "@/lib/utils"
 import Topbar from "@/components/layout/topbar"
-import "../css/globals.css"
 import { QuickQuizToast } from "@/components/layout/quick-quiz-toast"
+import "../css/globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
   icons: "/favicon.ico",
-  title: "Master Drive | Aprenda a conduzir jogando",
+  title: "Master Driver | Aprenda a conduzir jogando",
   description:
     "Estude para o exame de condução com um sistema de Active Recall gamificado: XP, níveis, conquistas e revisão inteligente.",
 }
@@ -39,7 +39,7 @@ export default function RootLayout({
 
             <div className="flex min-h-screen">
               <Sidebar />
-              
+
               <div className="w-full">
                 <Topbar />
                 <main className="flex-1 pb-24 lg:pb-0">{children}</main>
