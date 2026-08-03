@@ -24,7 +24,7 @@ export function MobileSidebar() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Abrir menu"
-        className="glass-hover flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-text)] md:hidden"
+        className="glass-hover flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-text)]"
       >
         <Menu className="h-6 w-6" />
       </button>
