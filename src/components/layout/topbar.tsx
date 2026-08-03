@@ -28,7 +28,7 @@ export default function Topbar() {
 
   return (
     <header className="w-full bg-[var(--color-base)] z-10 sticky top-0 flex items-center justify-between gap-1 border-b border-[var(--color-gray-muted)] px-4 sm:px-6 py-3.5 sm:py-4">
-      <div className="block md:hidden">
+      <div className="block sm:hidden">
         <MobileSidebar />
       </div>
 
