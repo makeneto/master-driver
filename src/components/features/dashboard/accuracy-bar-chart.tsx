@@ -1,20 +1,34 @@
-"use client";
+"use client"
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { TOPICS } from "@/constants/topics";
-import type { StatisticsState } from "@/types";
-import { useTranslation } from "@/hooks/use-translation";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts"
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card"
+import type { StatisticsState } from "@/types"
+import { useTranslation } from "@/hooks/use-translation"
+import { TOPICS } from "@/data/topic-list"
 
 export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
-  const { t, topicText } = useTranslation();
+  const { t, topicText } = useTranslation()
   const data = TOPICS.map((tp) => {
-    const name = topicText(tp.id).name;
+    const name = topicText(tp.id).name
     return {
       name: name.length > 14 ? name.slice(0, 13) + "…" : name,
       Precisão: topics[tp.id].accuracy,
-    };
-  });
+    }
+  })
 
   return (
     <Card className="p-6">
@@ -25,8 +39,15 @@ export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
 
       <div className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 8 }}>
-            <CartesianGrid strokeDasharray="4 8" stroke="rgba(255,255,255,0.06)" vertical={false} />
+          <BarChart
+            data={data}
+            margin={{ top: 8, right: 8, left: -16, bottom: 8 }}
+          >
+            <CartesianGrid
+              strokeDasharray="4 8"
+              stroke="rgba(255,255,255,0.06)"
+              vertical={false}
+            />
             <XAxis
               dataKey="name"
               tick={{ fill: "#8b93a1", fontSize: 11 }}
@@ -37,7 +58,12 @@ export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
               textAnchor="end"
               height={60}
             />
-            <YAxis tick={{ fill: "#8b93a1", fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
+            <YAxis
+              tick={{ fill: "#8b93a1", fontSize: 11 }}
+              axisLine={false}
+              tickLine={false}
+              domain={[0, 100]}
+            />
             <Tooltip
               contentStyle={{
                 background: "#171b24",
@@ -47,7 +73,11 @@ export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
               }}
               cursor={{ fill: "rgba(255,255,255,0.04)" }}
             />
-            <Bar dataKey="Precisão" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
+            <Bar
+              dataKey="Precisão"
+              fill="url(#barGradient)"
+              radius={[6, 6, 0, 0]}
+            />
             <defs>
               <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#f5b942" />
@@ -58,5 +88,5 @@ export function AccuracyBarChart({ topics }: { topics: StatisticsState }) {
         </ResponsiveContainer>
       </div>
     </Card>
-  );
+  )
 }
