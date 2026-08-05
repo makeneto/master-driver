@@ -40,7 +40,7 @@ export function SessionComplete({
       <Card className="flex flex-col items-center gap-6 p-10 text-center">
         <PartyPopper className="h-8 w-8 text-[var(--color-gold)]" />
         <div>
-          <h2 className="font-[var(--font-display)] text-2xl font-semibold">
+          <h2 className="text-2xl font-semibold">
             {t("quiz.sessionComplete")}
           </h2>
           <p className="mt-1 text-sm text-[var(--color-text-muted)]">
