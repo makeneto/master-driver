@@ -1,4 +1,4 @@
-import { TOPICS } from "@/constants/topics"
+import { TOPICS } from "@/data/topic-list"
 import { useTranslation } from "@/hooks/use-translation"
 import { formatDate } from "@/lib/utils"
 import { useAppSelector } from "@/store/hooks"
@@ -14,7 +14,7 @@ export default function DashboardIntro() {
 
   return (
     <div>
-      <h1 className="font-[var(--font-display)] text-2xl font-semibold tracking-tight">
+      <h1 className="text-2xl font-semibold tracking-tight">
         {t("dashboard.title")}
       </h1>
       <p className="mt-1 text-sm text-[var(--color-text-muted)]">
