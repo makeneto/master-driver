@@ -233,11 +233,10 @@ const pt = {
     },
   },
   donate: {
+    title: "Doação",
     titleCard: "Doação",
     descriptionCard:
       "Seu apoio me ajuda a continuar criando e mantendo este e outros projetos gratuitos.",
-    title: "Donate",
-    description: "Support my work by donating.",
   },
   search: {
     label: "Pesquisar tópico",
@@ -462,11 +461,10 @@ const en: Dict = {
     },
   },
   donate: {
+    title: "Donation",
     titleCard: "Donation",
     descriptionCard:
       "Your support helps me continue creating and maintaining this and other free projects.",
-    title: "Donate",
-    description: "Support my work by donating.",
   },
   search: {
     label: "Search topic",
@@ -695,11 +693,10 @@ const fr: Dict = {
     },
   },
   donate: {
+    title: "Don",
     titleCard: "Don",
     descriptionCard:
       "Votre soutien me permet de continuer à créer et à maintenir ce projet et d'autres projets gratuits.",
-    title: "Donate",
-    description: "Support my work by donating.",
   },
   search: {
     label: "Rechercher un sujet",

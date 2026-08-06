@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import * as ProgressPrimitive from "@radix-ui/react-progress";
-import * as SwitchPrimitive from "@radix-ui/react-switch";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import * as ProgressPrimitive from "@radix-ui/react-progress"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
+import { cn } from "@/lib/utils"
 
 export const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
@@ -11,7 +11,10 @@ export const Progress = React.forwardRef<
 >(({ className, value, ...props }, ref) => (
   <ProgressPrimitive.Root
     ref={ref}
-    className={cn("relative h-2 w-full overflow-hidden rounded-full bg-[var(--color-overlay)]", className)}
+    className={cn(
+      "relative h-2 w-full overflow-hidden rounded-full bg-[var(--color-overlay)]",
+      className,
+    )}
     {...props}
   >
     <ProgressPrimitive.Indicator
@@ -19,8 +22,8 @@ export const Progress = React.forwardRef<
       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
     />
   </ProgressPrimitive.Root>
-));
-Progress.displayName = "Progress";
+))
+Progress.displayName = "Progress"
 
 export const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitive.Root>,
@@ -30,23 +33,26 @@ export const Switch = React.forwardRef<
     ref={ref}
     className={cn(
       "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-[var(--color-hairline-strong)] bg-[var(--color-overlay)] transition-colors data-[state=checked]:bg-[var(--color-gold)]",
-      className
+      className,
     )}
     {...props}
   >
     <SwitchPrimitive.Thumb className="pointer-events-none block h-5 w-5 translate-x-0.5 rounded-full bg-white shadow-lg transition-transform data-[state=checked]:translate-x-[22px]" />
   </SwitchPrimitive.Root>
-));
-Switch.displayName = "Switch";
+))
+Switch.displayName = "Switch"
 
-export function Badge({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
+export function Badge({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn(
         "inline-flex items-center rounded-full border border-[var(--color-hairline-strong)] bg-[var(--color-overlay)] px-2.5 py-0.5 text-xs font-medium text-[var(--color-text-muted)]",
-        className
+        className,
       )}
       {...props}
     />
-  );
+  )
 }

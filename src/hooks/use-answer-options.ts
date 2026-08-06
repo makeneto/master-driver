@@ -4,49 +4,32 @@ import { useMemo } from "react"
 import { useTranslation } from "./use-translation"
 import { questions } from "@/data/questions"
 import type { Question } from "@/types"
+import {
+  FALLBACK_DISTRACTOR,
+  NO_ANSWER,
+  NO_WORD,
+  YES_ANSWER,
+  YES_WORD,
+} from "@/data/answer-options"
+import { getFirstWord } from "@/utils/getFirstWord"
 
 export type AnswerOption = { text: string; correct: boolean }
 
-const YES_WORD: Record<string, string> = { pt: "sim", en: "yes", fr: "oui" }
-const NO_WORD: Record<string, string> = { pt: "não", en: "no", fr: "non" }
-const YES_ANSWER: Record<string, string> = {
-  pt: "Sim.",
-  en: "Yes.",
-  fr: "Oui.",
-}
-const NO_ANSWER: Record<string, string> = { pt: "Não.", en: "No.", fr: "Non." }
-const FALLBACK_DISTRACTOR: Record<string, string> = {
-  pt: "Nenhuma das anteriores.",
-  en: "None of the above.",
-  fr: "Aucune de ces réponses.",
-}
-
-function firstWord(text: string): string {
-  return (
-    text
-      .trim()
-      .toLowerCase()
-      .replace(/[.,!?;:]/g, "")
-      .split(/\s+/)[0] ?? ""
-  )
-}
-
-/** Pseudo-aleatório determinístico a partir de um número (estável entre re-renders). */
 function seededRandom(seed: number): number {
   const x = Math.sin(seed * 999.37) * 10000
   return x - Math.floor(x)
 }
 
-/** Gera as 2 opções de resposta (correta + distrator) para uma pergunta, já baralhadas. */
 export function useAnswerOptions(question: Question | null): AnswerOption[] {
   const { language, questionText } = useTranslation()
 
   return useMemo(() => {
     if (!question) return []
     const { answer: correctAnswer } = questionText(question)
-    const fw = firstWord(correctAnswer)
+    const fw = getFirstWord(correctAnswer)
 
     let distractorText: string
+
     if (fw === YES_WORD[language]) {
       distractorText = NO_ANSWER[language]
     } else if (fw === NO_WORD[language]) {

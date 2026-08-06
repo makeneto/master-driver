@@ -35,6 +35,7 @@ export function NotebookChapter({
             className="h-5 w-5 text-[var(--color-gold-soft)]"
           />
         </div>
+
         <div className="flex-1">
           <p className="text-[10px] font-medium uppercase tracking-widest text-[var(--color-text-faint)]">
             {chapterLabel} {chapter.number}
@@ -43,6 +44,7 @@ export function NotebookChapter({
             {chapter.title}
           </h2>
         </div>
+
         <ChevronDown
           className={cn(
             "h-5 w-5 shrink-0 text-[var(--color-text-faint)] transition-transform duration-300",

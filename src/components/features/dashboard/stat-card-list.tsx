@@ -1,10 +1,10 @@
 import { CheckCircle2, Clock, ListChecks, Target } from "lucide-react"
 
 import { StatCard } from "./stat-card"
-import { TOPICS } from "@/constants/topics"
 import { useAppSelector } from "@/store/hooks"
 import { useTranslation } from "@/hooks/use-translation"
 import useStatsCard from "@/hooks/use-stats-card"
+import { TOPICS } from "@/data/topic-list"
 
 export default function StatCardList() {
   const { t } = useTranslation()

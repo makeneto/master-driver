@@ -50,10 +50,11 @@ export function QuestionCard({
           <span className="font-[var(--font-mono)] text-xs tracking-wide text-[var(--color-text-faint)]">
             {t("quiz.questionOf", { current: index + 1, total })}
           </span>
+
           <div className="lane-divider flex-1" />
         </div>
 
-        <h2 className="font-[var(--font-display)] text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
+        <h2 className="text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
           {questionLabel}
         </h2>
 

@@ -1,5 +1,5 @@
-import { TOPICS } from "@/constants/topics"
 import { getQuestionsByTopic } from "@/data/questions"
+import { TOPICS } from "@/data/topic-list"
 import { useAppSelector } from "@/store/hooks"
 
 export default function useStatsCard() {

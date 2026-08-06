@@ -1,4 +1,3 @@
-import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
@@ -23,7 +22,8 @@ const buttonVariants = cva(
         teal: "text-[var(--color-teal-soft)] hover:bg-[var(--color-teal-soft)]/10",
         success:
           "text-[var(--color-success)] bg-[var(--color-success)]/9 hover:bg-[var(--color-success)]/18",
-        danger: "text-[var(--color-danger)] bg-[var(--color-danger)]/9 hover:bg-[var(--color-danger)]/18",
+        danger:
+          "text-[var(--color-danger)] bg-[var(--color-danger)]/9 hover:bg-[var(--color-danger)]/18",
       },
       size: {
         default:

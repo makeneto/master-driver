@@ -51,7 +51,7 @@ export function ExamResults({
           }
         />
         <div>
-          <h2 className="font-[var(--font-display)] text-2xl font-semibold">
+          <h2 className="text-2xl font-semibold">
             {passed ? t("exam.passed") : t("exam.failed")}
           </h2>
           <p className="mt-1 text-sm text-[var(--color-text-muted)]">
@@ -125,6 +125,7 @@ export function ExamResults({
           <CardHeader className="p-0 pb-4">
             <CardTitle>{t("exam.wrongExplanation")}</CardTitle>
           </CardHeader>
+          
           <div className="space-y-4">
             {wrongQuestions.map((q) => (
               <div

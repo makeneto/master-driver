@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+
 import { QuizContent } from "@/components/features/quiz/quiz-content"
 import { QuizLoadingFallback } from "@/components/features/quiz/quiz-loading-fallback"
 

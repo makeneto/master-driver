@@ -85,7 +85,7 @@ export function NotebookTable({
             {headers.map((h) => (
               <th
                 key={h}
-                className="border-b border-[var(--color-hairline)] px-4 py-2.5 text-left font-[var(--font-display)] text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]"
+                className="border-b border-[var(--color-hairline)] px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]"
               >
                 {h}
               </th>
@@ -124,7 +124,7 @@ export function NotebookList({
   return (
     <div className="mb-5">
       {title && (
-        <p className="mb-2 font-[var(--font-display)] text-sm font-semibold text-[var(--color-text)]">
+        <p className="mb-2 text-sm font-semibold text-[var(--color-text)]">
           {title}
         </p>
       )}
@@ -152,7 +152,7 @@ export function NotebookSummary({
 }) {
   return (
     <div className="mt-6 rounded-xl border border-[var(--color-hairline-strong)] bg-zinc-100 dark:bg-zinc-900 from-[var(--color-gold)]/10 to-[var(--color-teal)]/10 p-5">
-      <p className="mb-2 flex items-center gap-2 font-[var(--font-display)] text-sm font-semibold text-[var(--color-text)]">
+      <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--color-text)]">
         <ListChecks className="h-4 w-4 text-[var(--color-gold)]" />
         {title}
       </p>

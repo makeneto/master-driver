@@ -5,7 +5,6 @@ import { toast } from "sonner"
 import { useTranslation } from "@/hooks/use-translation"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { questions, getQuestionsByTopic } from "@/data/questions"
-import { TOPICS } from "@/constants/topics"
 import { buildSession } from "@/lib/recall-algorithm"
 import { calculateAnswerXp } from "@/lib/xp"
 import { evaluateAchievements } from "@/lib/achievements-checker"
@@ -19,14 +18,13 @@ import { unlockAchievement } from "@/store/slices/achievementsSlice"
 import { useStudyTimer } from "@/hooks/use-study-timer"
 import {
   startSession,
-  revealAnswer,
   submitEvaluation,
   nextQuestion,
   endSession,
 } from "@/store/slices/quizSlice"
 import { useAnswerOptions } from "@/hooks/use-answer-options"
 import { SessionAnswer } from "@/components/features/quiz/session-complete"
-import type { Question } from "@/types"
+import { TOPICS } from "@/data/topic-list"
 
 const ADVANCE_DELAY_MS = 1400
 

@@ -23,7 +23,7 @@ export default function TopbarGreetings() {
 
   return (
     <div className="hidden md:flex items-center gap-3">
-      <p className="text-sm font-[var(--font-display)] font-semibold tracking-tight">
+      <p className="text-sm font-semibold tracking-tight">
         <span className="text-[var(--color-text-muted)]">{greeting},</span>{" "}
         {firstName}
         <span className="text-[var(--color-text-muted)]">.</span>

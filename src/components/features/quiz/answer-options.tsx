@@ -5,17 +5,19 @@ import { Check, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { AnswerOption } from "@/hooks/use-answer-options"
 
+interface AnswerOptionsProps {
+  options?: AnswerOption[]
+  attempted?: number[]
+  locked?: boolean
+  onSelect?: (index: number) => void
+}
+
 export function AnswerOptions({
   options = [],
   attempted = [],
   locked = false,
   onSelect = () => {},
-}: {
-  options?: AnswerOption[]
-  attempted?: number[]
-  locked?: boolean
-  onSelect?: (index: number) => void
-}) {
+}: AnswerOptionsProps) {
   const safeOptions = options ?? []
   const safeAttempted = attempted ?? []
 

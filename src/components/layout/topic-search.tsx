@@ -1,12 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo, useRef, useState } from "react"
 import { Search, X } from "lucide-react"
+
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
 import { cn } from "@/lib/utils"
 import { useTopicSearch } from "@/hooks/use-topic-search"
-import { TOPICS } from "@/constants/topics"
 
 export function TopicSearch({ className }: { className?: string }) {
   const {
@@ -15,7 +14,6 @@ export function TopicSearch({ className }: { className?: string }) {
     inputRef,
     query,
     setQuery,
-    isFocused,
     setIsFocused,
     showResults,
     results,

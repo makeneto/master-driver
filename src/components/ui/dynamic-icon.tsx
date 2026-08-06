@@ -18,7 +18,7 @@ import {
   Map,
   Crown,
   type LucideProps,
-} from "lucide-react";
+} from "lucide-react"
 
 const ICONS = {
   Signpost,
@@ -39,11 +39,14 @@ const ICONS = {
   Zap,
   Map,
   Crown,
-} as const;
+} as const
 
-export type IconName = keyof typeof ICONS;
+export type IconName = keyof typeof ICONS
 
-export function DynamicIcon({ name, ...props }: { name: string } & LucideProps) {
-  const Icon = ICONS[name as IconName] ?? Sparkles;
-  return <Icon {...props} />;
+export function DynamicIcon({
+  name,
+  ...props
+}: { name: string } & LucideProps) {
+  const Icon = ICONS[name as IconName] ?? Sparkles
+  return <Icon {...props} />
 }

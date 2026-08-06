@@ -18,7 +18,6 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import {
   setSoundsEnabled,
   setAnimationsEnabled,
-  setLanguage,
 } from "@/store/slices/settingsSlice"
 import { resetStatistics } from "@/store/slices/statisticsSlice"
 import { resetProfile } from "@/store/slices/profileSlice"
@@ -178,7 +177,11 @@ export default function SettingsPage() {
               hidden
               onChange={handleImportFile}
             />
-            <Button className="text-[0.8rem]" variant="danger" onClick={handleReset}>
+            <Button
+              className="text-[0.8rem]"
+              variant="danger"
+              onClick={handleReset}
+            >
               <RotateCcw className="h-4 w-4" />{" "}
               {confirmingReset
                 ? t("settings.confirmReset")

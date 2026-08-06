@@ -7,8 +7,8 @@ import { ThemeProvider } from "@/providers/theme-provider"
 import { Sidebar } from "@/components/layout/sidebar"
 import { HtmlLangSync } from "@/components/layout/html-lang-sync"
 import { cn } from "@/lib/utils"
-import Topbar from "@/components/layout/topbar"
 import { QuickQuizToast } from "@/components/layout/quick-quiz-toast"
+import Topbar from "@/components/layout/topbar"
 import "../css/globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -45,7 +45,7 @@ export default function RootLayout({
                 <main className="flex-1 pb-24 lg:pb-0">{children}</main>
               </div>
             </div>
-            
+
             <Toaster
               theme="dark"
               position="top-right"

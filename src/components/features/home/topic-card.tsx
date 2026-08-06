@@ -56,7 +56,7 @@ export function TopicCard({
             </Gauge>
           </div>
 
-          <h3 className="mt-4 font-[var(--font-display)] font-semibold tracking-tight">
+          <h3 className="mt-4 font-semibold tracking-tight">
             {name}
           </h3>
           <p className="mt-1 text-[0.86rem] line-clamp-1 text-[var(--color-text-muted)]">

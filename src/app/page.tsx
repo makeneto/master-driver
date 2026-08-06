@@ -1,14 +1,15 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { Zap } from "lucide-react"
+import Link from "next/link"
+
 import { useAppSelector } from "@/store/hooks"
-import { TOPICS } from "@/constants/topics"
 import { getQuestionsByTopic, questions } from "@/data/questions"
+import { TOPICS } from "@/data/topic-list"
 import { TopicCard } from "@/components/features/home/topic-card"
 import { useTranslation } from "@/hooks/use-translation"
-import Link from "next/link"
-import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Zap } from "lucide-react"
 
 export default function HomePage() {
   const topicsStats = useAppSelector((s) => s.statistics.topics)
@@ -41,7 +42,7 @@ export default function HomePage() {
               </span>
               <Link
                 href="/profile"
-                className="font-[var(--font-display)] text-2xl font-semibold tracking-tight"
+                className="text-2xl font-semibold tracking-tight"
               >
                 {firstName}
               </Link>
@@ -50,7 +51,7 @@ export default function HomePage() {
 
           <div className="mb-8 flex items-end justify-between">
             <div>
-              <h2 className="font-[var(--font-display)] text-xl md:text-2xl font-semibold tracking-tight">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
                 {t("home.categories")}
               </h2>
               <span className="text-xs text-[var(--color-text-faint)]">

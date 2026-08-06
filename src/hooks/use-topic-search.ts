@@ -2,8 +2,8 @@
 
 import { useMemo, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import { TOPICS } from "@/constants/topics"
 import { useTranslation } from "@/hooks/use-translation"
+import { TOPICS } from "@/data/topic-list"
 
 export function useTopicSearch() {
   const { t, topicText } = useTranslation()
