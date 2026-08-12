@@ -5,7 +5,6 @@ import { AnimatePresence } from "framer-motion"
 import { Menu } from "lucide-react"
 
 import { MobileSidebarDrawer } from "./mobile-sidebar-drawer"
-import { Button } from "../ui/button"
 
 export function MobileSidebar() {
   const [open, setOpen] = useState(false)
@@ -16,6 +15,7 @@ export function MobileSidebar() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Abrir menu"
+        className="block sm:hidden"
       >
         <Menu className="h-6 w-6" />
       </button>
