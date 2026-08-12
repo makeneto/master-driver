@@ -243,6 +243,11 @@ const pt = {
     placeholder: "O que vai estudar?",
     noResults: "Nenhum tópico encontrado para o idioma selecionado.",
   },
+  notFound: {
+    title: "Mantenha a calma, houve um acidente.",
+    description:
+      "Mas você não se perdeu. A página que você está procurando não foi encontrada.",
+  },
 }
 
 const en: Dict = {
@@ -470,6 +475,11 @@ const en: Dict = {
     label: "Search topic",
     placeholder: "What to study?",
     noResults: "No topics found for the selected language.",
+  },
+  notFound: {
+    title: "Keep calm, there was an accident.",
+    description:
+      "But you didn't get lost. The page you are looking for was not found.",
   },
 }
 
@@ -702,6 +712,11 @@ const fr: Dict = {
     label: "Rechercher un sujet",
     placeholder: "Que étudier ?",
     noResults: "Aucun sujet trouvé pour la langue sélectionnée.",
+  },
+  notFound: {
+    title: "Restez calme, il y a eu un accident.",
+    description:
+      "Mais tu ne t'es pas perdu. La page que vous recherchez n'a pas été trouvée.",
   },
 }
 
