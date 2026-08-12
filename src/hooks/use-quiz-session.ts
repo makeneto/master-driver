@@ -38,6 +38,7 @@ export function useQuizSession(
   const topicsStats = useAppSelector((s) => s.statistics.topics)
   const achievements = useAppSelector((s) => s.achievements.items)
   const profile = useAppSelector((s) => s.profile)
+  const { achievementText } = useTranslation()
 
   const [attempted, setAttempted] = useState<number[]>([])
   const [locked, setLocked] = useState(false)
@@ -148,7 +149,6 @@ export function useQuizSession(
         ) as never,
         currentTopicStreak: newStreak,
       })
-      const { achievementText } = useTranslation()
       toUnlock.forEach((id) => {
         dispatch(unlockAchievement(id))
         toast.success(`${achievementText(id).title}`)
