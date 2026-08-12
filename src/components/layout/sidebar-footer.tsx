@@ -5,7 +5,7 @@ export default function SidebarFooter() {
 
   return (
     <section className="grid gap-3">
-      <DonationCard />
+      {/* <DonationCard /> */}
 
       <p className="text-[10px] text-center tracking-widest text-[var(--color-text-muted)]">
         © Makene Neto | {currentYear}
