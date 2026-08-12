@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { Activity, useState } from "react"
 import { AnimatePresence } from "framer-motion"
 import { Menu } from "lucide-react"
 
@@ -21,7 +21,9 @@ export function MobileSidebar() {
       </button>
 
       <AnimatePresence>
-        {open && <MobileSidebarDrawer onClose={() => setOpen(false)} />}
+        <Activity mode={open ? "visible" : "hidden"}>
+          <MobileSidebarDrawer onClose={() => setOpen(false)} />
+        </Activity>
       </AnimatePresence>
     </React.Fragment>
   )
