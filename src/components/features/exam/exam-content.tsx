@@ -36,13 +36,12 @@ export function ExamContent() {
       <div className="mx-auto max-w-2xl px-6 py-16">
         <Card className="flex flex-col items-center gap-4 p-10 text-center">
           <GraduationCap className="h-8 w-8 text-[var(--color-gold-soft)]" />
-          <h1 className="text-2xl font-semibold">
-            {t("exam.title")}
-          </h1>
-          <p className="text-sm text-[var(--color-text-muted)]">
+          <h1 className="text-2xl font-semibold">{t("exam.title")}</h1>
+          <p className="text-sm text-[var(--color-text-muted)] sm:w-[70%]">
             {t("exam.intro", { count: EXAM_SIZE })}
           </p>
-          <Button size="lg" onClick={startExam}>
+
+          <Button size="lg" onClick={startExam} className="mt-4">
             {t("exam.start")}
           </Button>
         </Card>
